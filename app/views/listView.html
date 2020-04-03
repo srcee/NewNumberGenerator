@@ -1,0 +1,16 @@
+<div ng-if="generators.length > 0">
+    <table class="listOfGenerators">
+        <tr>
+            <th>Name of the number generator</th>
+            <th>Current count of generated numbers</th>
+            <th>Color</th>
+            <th>Details</th>
+        </tr>
+        <tr ng-repeat="generator in generators">
+            <td>{{generator.name}}</td>
+            <td>{{generator.listOfNumbers.length}}</td>
+            <td ng-style="{'background-color': generator.color}"></td>
+            <td><a ng-href="#/details/{{$index}}">check</a></td>
+        </tr>
+    </table>
+</div>

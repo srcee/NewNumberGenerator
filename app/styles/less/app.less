@@ -1,0 +1,73 @@
+@primaryColor: lightblue;
+@secondaryColor: darkblue;
+@hoverColor: black;
+
+@fontFamily: 'Courier New', Courier, monospace;
+
+@numbersFontFamily: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+body {
+  background-color: @primaryColor;
+}
+
+
+.menu {
+  text-align: center;
+  list-style: none;
+  border-bottom: 0.3em solid @secondaryColor;
+  margin-bottom: 2em;
+  padding: 0 0 1em;
+
+  li {
+    display: inline;
+    padding-right: 3em;
+
+    a {
+      text-decoration: none;
+      color: @secondaryColor;
+      font-size: 1.5em;
+      font-weight: bolder;
+      font-family: @fontFamily;
+    }
+
+    a:hover {
+      color: @hoverColor;
+    }
+  }
+
+}
+
+table,
+td,
+th {
+  border: 0.1em solid @secondaryColor;
+  text-align: center;
+  font-size: 1em;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+
+
+.details {
+  h1 {
+    text-align: center;
+    font-size: 1.5em;
+    font-family: @fontFamily;
+
+    span {
+      color: @secondaryColor;
+      font-size: 1.5em;
+    }
+  }
+
+  div {
+    font-size: 2em;
+    font-family: @numbersFontFamily;
+    color: @secondaryColor;
+  }
+}

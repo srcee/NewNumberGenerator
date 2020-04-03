@@ -1,0 +1,50 @@
+body {
+  background-color: lightblue;
+}
+.menu {
+  text-align: center;
+  list-style: none;
+  border-bottom: 0.3em solid darkblue;
+  margin-bottom: 2em;
+  padding: 0 0 1em;
+}
+.menu li {
+  display: inline;
+  padding-right: 3em;
+}
+.menu li a {
+  text-decoration: none;
+  color: darkblue;
+  font-size: 1.5em;
+  font-weight: bolder;
+  font-family: 'Courier New', Courier, monospace;
+}
+.menu li a:hover {
+  color: black;
+}
+table,
+td,
+th {
+  border: 0.1em solid darkblue;
+  text-align: center;
+  font-size: 1em;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+.details h1 {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Courier New', Courier, monospace;
+}
+.details h1 span {
+  color: darkblue;
+  font-size: 1.5em;
+}
+.details div {
+  font-size: 2em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: darkblue;
+}
