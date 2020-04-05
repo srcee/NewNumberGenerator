@@ -11,6 +11,7 @@ generatorModule.factory('actions', ['$interval', function ($interval) {
     class NumberGenerator {
         listOfNumbers = [];
         interval;
+        isWorking;
         color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16); //generates random color.
         constructor(name, count) {
             this.name = name;
@@ -19,15 +20,18 @@ generatorModule.factory('actions', ['$interval', function ($interval) {
 
         // Method that starts to create new random number in every 5 sec.
         start() {
+            this.isWorking = true;
             this.interval = $interval(() => {
                 return this.listOfNumbers.push(Math.floor(Math.random() * (101 - 1)) + 1);
             }, 5000, this.count);
         }
         pause() {
+            this.isWorking = false;
             $interval.cancel(this.interval);
             this.interval = undefined;
         }
         resume() {
+            this.isWorking = true;
             this.interval = $interval(() => {
                 return this.listOfNumbers.push(Math.floor(Math.random() * (101 - 1)) + 1);
             }, 5000, this.count - this.listOfNumbers.length);

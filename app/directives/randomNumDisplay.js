@@ -1,20 +1,18 @@
-app.directive('ngPosition', function () {
+genApp.directive('position', function () {
     return {
         scope: true,
-        template: "<div class='num' ng-style='pos'></div>",
+        template: "<div ng-style='pos'></div>",
         replace: true,
         controller: function ($scope) {
 
+            console.log('directive is working');
             $scope.pos = {
-                top: undefined,
-                left: undefined
+                width: 3 + "em",
+                height: 3 + "em",
+                position: absolute,
+                top: Math.random() * 400 + "px",
+                left: Math.random() * 500 + "px"
             };
-
-            $scope.newPos = function () {
-                // calculate however you'd like:
-                $scope.pos.top = Math.random() * 400 + "px";
-                $scope.pos.left = Math.random() * 500 + "px";
-            }
         }
     };
 });

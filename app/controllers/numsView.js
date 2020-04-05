@@ -2,13 +2,20 @@ genApp.controller('numsViewCtrl', ['$scope', 'actions', function ($scope, action
 
     $scope.generators = actions.getGenerators();
 
-    $scope.position = {
-        top: 0,
-        left: 0
-    };
+    // TODO: Refactor it cause it fulls the console with errors!!!
+    $scope.randomPosition = function () {
 
-    $scope.generatePosition = function () {
-        $scope.pos.top = Math.random() * 400 + "px";
-        $scope.pos.left = Math.random() * 500 + "px";
+        let top = Math.floor(Math.random() * (800 - 100) + 100) + "px"
+        let left = Math.floor(Math.random() * (800 - 100) + 100) + "px"
+
+        console.log(top, left);
+
+        return {
+            'width': '3em',
+            'height': '3em',
+            'position': 'absolute',
+            'top': top,
+            'left': left
+        }
     }
 }])

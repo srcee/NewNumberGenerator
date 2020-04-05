@@ -5,12 +5,15 @@
             <th>Current count of generated numbers</th>
             <th>Color</th>
             <th>Details</th>
+            <th>Pause/Resume</th>
         </tr>
         <tr ng-repeat="generator in generators">
             <td>{{generator.name}}</td>
             <td>{{generator.listOfNumbers.length}}</td>
             <td ng-style="{'background-color': generator.color}"></td>
             <td><a ng-href="#/details/{{$index}}">check</a></td>
+            <td><button ng-click="pauseHandler($index)">{{generator.isWorking ? "pause" : "resume"}}</button>
+            </td>
         </tr>
     </table>
 </div>

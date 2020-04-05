@@ -1,7 +1,8 @@
 <div>
     <div ng-repeat="generator in generators">
-        <div ng-repeat="num in generator.listOfNums">
-            <div ng-position>{{num}}</div>
+        <div class='view' ng-repeat="num in generator.listOfNumbers track by $index"
+            ng-style="{'color': generator.color }">
+            <div ng-style="{{randomPosition()}}">{{num}}</div>
         </div>
     </div>
 </div>
