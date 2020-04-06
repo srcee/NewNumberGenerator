@@ -4,8 +4,8 @@ genApp.directive('position', function () {
         template: "<div class='nums-view' ng-style='pos'>{{num}}</div>",
         link: function (scope) {
 
-            console.log('directive is working');
             scope.pos = {
+                backgroundColor: scope.$parent.generator.color,
                 top: Math.random() * window.innerHeight + "px",
                 left: Math.random() * window.innerWidth + "px"
             };

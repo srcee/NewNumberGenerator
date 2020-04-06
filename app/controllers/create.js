@@ -1,5 +1,6 @@
-genApp.controller('createCtrl', ['$scope', 'actions', function ($scope, actions) {
+genApp.controller('createCtrl', ['$scope', '$location', 'genFactory', function ($scope, $location, genFactory) {
     $scope.createHandler = function (data) {
-        actions.create(data.generatorsName, data.numsCount);
+        genFactory.create(data.generatorsName, data.numsCount);
+        $location.path('/list');
     }
 }]);

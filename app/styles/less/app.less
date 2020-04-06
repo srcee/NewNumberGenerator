@@ -9,6 +9,27 @@ body {
   background-color: @primaryColor;
 }
 
+.create-generator-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  border: 2px solid @secondaryColor;
+  padding: 2rem;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: @fontFamily;
+  label{
+    display: block;
+    padding: 1rem 0 .25rem;
+  }
+  input{
+    display: block;
+    width: 100%;
+    border: 2px solid @secondaryColor;
+    padding: .5rem;
+    border-radius: 5px;
+  }
+}
+
 
 .menu {
   text-align: center;
@@ -74,17 +95,19 @@ table {
   font-size: 2em;
 }
 button {
-  border: none;
-  background-color: @primaryColor;
-  
-  background-color: @secondaryColor;
+  border: 0;
+  background: @secondaryColor;
   border-radius: 28px;
-  border: 1px solid @primaryColor;
-  display: inline-block;
+  padding: .5rem;
+  color: white;
+  margin: 1rem 0;
+  width: auto;
+  text-transform: uppercase;
   cursor: pointer;
-  color: @primaryColor;
-  font-family: @fontFamily;
-  font-size: 1em;  
+  transition: .3s background ease;
+  &:hover{
+    background:#3498DB;
+  }
 }
 
 button:disabled {
@@ -97,7 +120,13 @@ button:active {
   top: 1px;
 }
 .nums-view {
-  width: 3em;
-  height: 3em;
+  text-align: center;
+  padding-top: 3px;
+  width: 1.5em;
+  height: 1.5em;
+  color: white;
+  font-size: 1em;
+  font-family: @numbersFontFamily;
+  border-radius: 50%;
   position: absolute;
 }

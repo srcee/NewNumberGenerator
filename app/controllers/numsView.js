@@ -1,3 +1,3 @@
-genApp.controller('numsViewCtrl', ['$scope', 'actions', function ($scope, actions) {
-    $scope.generators = actions.getGenerators();
+genApp.controller('numsViewCtrl', ['$scope', 'genFactory', function ($scope, genFactory) {
+    $scope.generators = genFactory.getGenerators();
 }])

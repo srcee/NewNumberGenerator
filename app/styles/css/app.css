@@ -1,6 +1,26 @@
 body {
   background-color: lightgrey;
 }
+.create-generator-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  border: 2px solid darkblue;
+  padding: 2rem;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: 'Courier New', Courier, monospace;
+}
+.create-generator-form label {
+  display: block;
+  padding: 1rem 0 0.25rem;
+}
+.create-generator-form input {
+  display: block;
+  width: 100%;
+  border: 2px solid darkblue;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
 .menu {
   text-align: center;
   list-style: none;
@@ -52,16 +72,19 @@ table {
   font-size: 2em;
 }
 button {
-  border: none;
-  background-color: lightgrey;
-  background-color: darkblue;
+  border: 0;
+  background: darkblue;
   border-radius: 28px;
-  border: 1px solid lightgrey;
-  display: inline-block;
+  padding: 0.5rem;
+  color: white;
+  margin: 1rem 0;
+  width: auto;
+  text-transform: uppercase;
   cursor: pointer;
-  color: lightgrey;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1em;
+  transition: 0.3s background ease;
+}
+button:hover {
+  background: #3498DB;
 }
 button:disabled {
   background-color: white;
@@ -73,7 +96,13 @@ button:active {
   top: 1px;
 }
 .nums-view {
-  width: 3em;
-  height: 3em;
+  text-align: center;
+  padding-top: 3px;
+  width: 1.5em;
+  height: 1.5em;
+  color: white;
+  font-size: 1em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-radius: 50%;
   position: absolute;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var genApp = angular.module('numberGenerator', ['ngRoute', 'generatorModule']);
+var genApp = angular.module('numberGenerator', ['ngRoute', 'generatorFactory']);
 
 genApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');

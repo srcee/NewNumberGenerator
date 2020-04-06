@@ -1,9 +1,9 @@
 'use strict';
 
 
-var generatorModule = angular.module('generatorModule', []);
+var generatorFactory = angular.module('generatorFactory', []);
 
-generatorModule.factory('actions', ['$interval', function ($interval) {
+generatorFactory.factory('genFactory', ['$interval', function ($interval) {
 
     var generatorsArr = []; // List of all generators created.
 
@@ -34,24 +34,29 @@ generatorModule.factory('actions', ['$interval', function ($interval) {
         }
     }
 
-    // Creates new instance of NumberGenerator class.
-    function create(name, color, count) {
-        let newGen = new NumberGenerator(name, color, count);
-        newGen.start();
-        return generatorsArr.push(newGen);
-    }
     // Generates random color.
     function randomRgbColor() {
         function r() { return Math.floor(Math.random() * 255) }
         return 'rgb(' + r() + "," + r() + "," + r() + ')';
     }
 
+    // Creates new instance of NumberGenerator class.
+    function create(name, count) {
+        let newGen = new NumberGenerator(name, count);
+        newGen.start();
+        return generatorsArr.push(newGen);
+    }
+
     function getGenerators() {
         return generatorsArr;
+    }
+    function getGeneratorsById(idx) {
+        return generatorsArr[idx];
     }
 
     return {
         create: create,
-        getGenerators: getGenerators
+        getGenerators: getGenerators,
+        getGeneratorsById: getGeneratorsById
     }
 }]);

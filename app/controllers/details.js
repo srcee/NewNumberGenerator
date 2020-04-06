@@ -1,7 +1,5 @@
-genApp.controller('detailsCtrl', ['$scope', '$routeParams', 'actions', function ($scope, $routeParams, actions) {
+genApp.controller('detailsCtrl', ['$scope', '$routeParams', 'genFactory', function ($scope, $routeParams, genFactory) {
 
-    $scope.currentGenerator = actions.getGenerators()[$routeParams.id]
+    $scope.currentGenerator = genFactory.getGenerators()[$routeParams.id];
     $scope.list = $scope.currentGenerator.listOfNumbers;
-
-    console.log($scope.currentGenerator.color);
 }])
