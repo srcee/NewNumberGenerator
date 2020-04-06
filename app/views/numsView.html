@@ -2,7 +2,7 @@
     <div ng-repeat="generator in generators">
         <div class='view' ng-repeat="num in generator.listOfNumbers track by $index"
             ng-style="{'color': generator.color }">
-            <div ng-style="{{randomPosition()}}">{{num}}</div>
+            <div position></div>
         </div>
     </div>
 </div>

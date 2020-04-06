@@ -2,12 +2,11 @@ genApp.controller('listCtrl', ['$scope', 'actions', function ($scope, actions) {
     $scope.generators = actions.getGenerators();
 
     $scope.pauseHandler = function (idx) {
-        if ($scope.generators[idx].isWorking) {
-            $scope.generators[idx].pause();
+        let currentGenerator = $scope.generators[idx];
+        if (currentGenerator.isWorking) {
+            currentGenerator.pause();
         } else {
-            $scope.generators[idx].resume();
+            currentGenerator.start();
         }
     }
-
-
 }]);

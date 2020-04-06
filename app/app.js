@@ -7,8 +7,8 @@ genApp.config(['$locationProvider', '$routeProvider', function ($locationProvide
 
   $routeProvider
     .when('/', {
-      templateUrl: 'views/homeView.html',
-      controller: 'homeCtrl'
+      templateUrl: 'views/createView.html',
+      controller: 'createCtrl'
     })
     .when('/create', {
       templateUrl: 'views/createView.html',

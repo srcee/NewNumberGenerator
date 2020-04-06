@@ -3,7 +3,6 @@
 @hoverColor: black;
 
 @fontFamily: 'Courier New', Courier, monospace;
-
 @numbersFontFamily: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 body {
@@ -78,23 +77,27 @@ button {
   border: none;
   background-color: @primaryColor;
   
-  background-color: #44c767;
+  background-color: @secondaryColor;
   border-radius: 28px;
-  border: 1px solid #18ab29;
+  border: 1px solid @primaryColor;
   display: inline-block;
   cursor: pointer;
-  color: #ffffff;
+  color: @primaryColor;
   font-family: @fontFamily;
-  font-size: 1em;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627;
-  
-    
+  font-size: 1em;  
 }
-button:hover {
-  background-color: #5cbf2a;
+
+button:disabled {
+  background-color: white;
+  color: @primaryColor;
+  border-color: @primaryColor;
 }
 button:active {
   position: relative;
   top: 1px;
+}
+.nums-view {
+  width: 3em;
+  height: 3em;
+  position: absolute;
 }

@@ -5,45 +5,47 @@ var generatorModule = angular.module('generatorModule', []);
 
 generatorModule.factory('actions', ['$interval', function ($interval) {
 
-    var generatorsArr = [];
+    var generatorsArr = []; // List of all generators created.
 
-    // TODO: Have to do refactoring so the setInterval process could be paused and stopped anytime
     class NumberGenerator {
-        listOfNumbers = [];
+        listOfNumbers = []; // List of the generated numbers.
         interval;
-        isWorking;
-        color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16); //generates random color.
+        isWorking; // Holds the current status of the generator.
+        color = randomRgbColor();
         constructor(name, count) {
             this.name = name;
             this.count = count;
         }
 
-        // Method that starts to create new random number in every 5 sec.
+        // Starts the generation of new random number every 5 sec.
         start() {
             this.isWorking = true;
             this.interval = $interval(() => {
                 return this.listOfNumbers.push(Math.floor(Math.random() * (101 - 1)) + 1);
             }, 5000, this.count);
         }
+
+        // Pauses the generation of numbers and subtract 'count' with the number of currently generated numbers.
         pause() {
-            this.isWorking = false;
             $interval.cancel(this.interval);
             this.interval = undefined;
-        }
-        resume() {
-            this.isWorking = true;
-            this.interval = $interval(() => {
-                return this.listOfNumbers.push(Math.floor(Math.random() * (101 - 1)) + 1);
-            }, 5000, this.count - this.listOfNumbers.length);
+            this.isWorking = false;
+            this.count -= this.listOfNumbers.length;
         }
     }
 
-    // Function that creates new instance of NumberGenerator class.
+    // Creates new instance of NumberGenerator class.
     function create(name, color, count) {
         let newGen = new NumberGenerator(name, color, count);
         newGen.start();
-        return generatorsArr.push(newGen); // Pushes the new generator in array.
+        return generatorsArr.push(newGen);
     }
+    // Generates random color.
+    function randomRgbColor() {
+        function r() { return Math.floor(Math.random() * 255) }
+        return 'rgb(' + r() + "," + r() + "," + r() + ')';
+    }
+
     function getGenerators() {
         return generatorsArr;
     }
