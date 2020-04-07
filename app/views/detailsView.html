@@ -1,3 +1,10 @@
+<div class="actionBtns">
+    <div class="actionBtnsPosition">
+        <button ng-click="normalHandler()">Normal</button>
+        <button ng-click="filteredHandler()">Filtered</button>
+        <button ng-click="randomHandler()">Random</button>
+    </div>
+</div>
 <div class="details">
     <h1>Currently there are
         <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersLength}} /
@@ -7,3 +14,7 @@
     <h3>Status: {{currentGenerator.isWorking ? "working" : "not working"}}</h3>
     <div ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersAsString}}</div>
 </div>
+
+<!-- <div normal-num-display></div> -->
+<!-- <div filtered-num-display></div> -->
+<!-- <div random-num-display></div> -->

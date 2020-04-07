@@ -1,7 +1,7 @@
 genApp.factory('genActionsService', ['genFactory', function (genFactory) {
 
     var generatorsArr = []; // List of all generators created.
-
+    var hasHiddenGenerators = false;
 
     function createGenerator(name, count) {
         let color = randomRgbColor();
@@ -16,6 +16,18 @@ genApp.factory('genActionsService', ['genFactory', function (genFactory) {
     function getGeneratorsById(idx) {
         return generatorsArr[idx];
     }
+    function hasHiddenGeneratorsChecker() {
+        return hasHiddenGenerators;
+    }
+
+    function hideGen(idx) {
+        generatorsArr[idx].isHidden = true;
+        hasHiddenGenerators = true;
+    }
+    function showGen() {
+        generatorsArr.map((gen) => gen.isHidden = false);
+        hasHiddenGenerators = false;
+    }
 
     // Generates random color.
     function randomRgbColor() {
@@ -27,6 +39,9 @@ genApp.factory('genActionsService', ['genFactory', function (genFactory) {
     return {
         createGenerator: createGenerator,
         getGenerators: getGenerators,
-        getGeneratorsById: getGeneratorsById
+        getGeneratorsById: getGeneratorsById,
+        hasHiddenGeneratorsChecker: hasHiddenGeneratorsChecker,
+        hideGen: hideGen,
+        showGen: showGen
     }
 }])

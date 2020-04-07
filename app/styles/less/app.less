@@ -30,7 +30,6 @@ body {
   }
 }
 
-
 .menu {
   text-align: center;
   list-style: none;
@@ -102,7 +101,6 @@ button {
   color: white;
   margin: 1rem 0;
   width: auto;
-  text-transform: uppercase;
   cursor: pointer;
   transition: .3s background ease;
   &:hover{
@@ -118,6 +116,15 @@ button:disabled {
 button:active {
   position: relative;
   top: 1px;
+}
+
+.actionBtns {
+  position: relative;
+  .actionBtnsPosition {
+    position: absolute;
+    display: inline-block;
+    right: 20px;
+  }
 }
 
 

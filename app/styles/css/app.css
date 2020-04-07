@@ -79,7 +79,6 @@ button {
   color: white;
   margin: 1rem 0;
   width: auto;
-  text-transform: uppercase;
   cursor: pointer;
   transition: 0.3s background ease;
 }
@@ -94,6 +93,14 @@ button:disabled {
 button:active {
   position: relative;
   top: 1px;
+}
+.actionBtns {
+  position: relative;
+}
+.actionBtns .actionBtnsPosition {
+  position: absolute;
+  display: inline-block;
+  right: 20px;
 }
 .nums-view {
   text-align: center;

@@ -9,6 +9,8 @@ generatorFactory.factory('genFactory', ['$interval', function ($interval) {
         listOfNumbers = []; // List of the generated numbers.
         interval;
         isWorking; // Holds the current status of the generator.
+        isHidden = false;
+
         constructor(name, count, color) {
             this.name = name;
             this.count = count;

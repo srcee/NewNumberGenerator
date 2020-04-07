@@ -1,3 +1,6 @@
+<div class="actionBtns">
+    <button class="actionBtnsPosition" ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
+</div>
 <div ng-if="generators.length > 0">
     <table class="listOfGenerators">
         <tr>
@@ -6,14 +9,14 @@
             <th>Color</th>
             <th>Details</th>
         </tr>
-        <tr ng-repeat="generator in generators">
+        <tr ng-repeat="generator in generators track by $index" ng-hide="generator.isHidden">
             <td>{{generator.name}}</td>
             <td>{{generator.getListOfNumbersLength}}</td>
             <td ng-style="{'background-color': generator.color}"></td>
             <td><a ng-href="#/details/{{$index}}">check</a></td>
-            <td><button ng-click="pauseHandler($index)">{{generator.isWorking ? "pause" : "resume"}}</button>
-            <td><button ng-click="deleteHandler($index)">delete</button>
-            </td>
+            <td><button ng-click="pauseHandler($index)">{{generator.isWorking ? "Pause" : "Resume"}}</button></td>
+            <td><button ng-click="deleteHandler($index)">Delete</button></td>
+            <td><button ng-click="hideHandler($index)">Hide</button></td>
         </tr>
     </table>
 </div>
