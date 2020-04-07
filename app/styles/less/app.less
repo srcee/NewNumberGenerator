@@ -119,6 +119,8 @@ button:active {
   position: relative;
   top: 1px;
 }
+
+
 .nums-view {
   text-align: center;
   padding-top: 3px;
@@ -129,4 +131,20 @@ button:active {
   font-family: @numbersFontFamily;
   border-radius: 50%;
   position: absolute;
+  span {
+    width: fit-content;
+    text-align: center;
+    border-radius: 10px;
+    left: 40px;
+    bottom: 40px;
+    position: absolute;
+    display: none;
+  }
 }
+
+.nums-view:hover {
+  cursor: help;
+  span {
+    display: block;
+  }
+} 

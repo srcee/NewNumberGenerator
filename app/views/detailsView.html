@@ -1,7 +1,9 @@
 <div class="details">
-    <h1>Currently there are <span ng-style="{'color': currentGenerator.color}">{{list.length}}</span> generated numbers
-        by <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.name}}</span>.
+    <h1>Currently there are
+        <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersLength}} /
+            {{currentGenerator.count}}</span>
+        generated numbers by <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.name}}</span>.
     </h1>
     <h3>Status: {{currentGenerator.isWorking ? "working" : "not working"}}</h3>
-    <div ng-style="{'color': currentGenerator.color}">{{list.join(' >>> ')}}</div>
+    <div ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersAsString}}</div>
 </div>

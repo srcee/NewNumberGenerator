@@ -1,5 +1,5 @@
-genApp.controller('listCtrl', ['$scope', 'genFactory', function ($scope, genFactory) {
-    $scope.generators = genFactory.getGenerators();
+genApp.controller('listCtrl', ['$scope', 'genActionsService', function ($scope, genActionsService) {
+    $scope.generators = genActionsService.getGenerators();
 
     $scope.pauseHandler = function (idx) {
         let currentGenerator = $scope.generators[idx];

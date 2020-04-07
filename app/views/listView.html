@@ -8,7 +8,7 @@
         </tr>
         <tr ng-repeat="generator in generators">
             <td>{{generator.name}}</td>
-            <td>{{generator.listOfNumbers.length}}</td>
+            <td>{{generator.getListOfNumbersLength}}</td>
             <td ng-style="{'background-color': generator.color}"></td>
             <td><a ng-href="#/details/{{$index}}">check</a></td>
             <td><button ng-click="pauseHandler($index)">{{generator.isWorking ? "pause" : "resume"}}</button>
