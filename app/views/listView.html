@@ -14,7 +14,8 @@
             <td>{{generator.getListOfNumbersLength}}</td>
             <td ng-style="{'background-color': generator.color}"></td>
             <td><a ng-href="#/details/{{$index}}">check</a></td>
-            <td><button ng-click="pauseHandler($index)">{{generator.isWorking ? "Pause" : "Resume"}}</button></td>
+            <td><button ng-click="pauseHandler($index)">{{generator.isWorking ? "Pause" : "Resume"}}</button>
+            </td>
             <td><button ng-click="deleteHandler($index)">Delete</button></td>
             <td><button ng-click="hideHandler($index)">Hide</button></td>
         </tr>

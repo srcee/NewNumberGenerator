@@ -89,17 +89,13 @@ table {
     color: @secondaryColor;
   }
 }
-.view {
-  text-align: center;
-  font-size: 2em;
-}
 button {
   border: 0;
   background: @secondaryColor;
   border-radius: 28px;
   padding: .5rem;
   color: white;
-  margin: 1rem 0;
+  // margin: 1rem 0;
   width: auto;
   cursor: pointer;
   transition: .3s background ease;
@@ -127,37 +123,43 @@ button:active {
   }
 }
 
-
 .nums-view {
+  font-size: 35px;
+  color: white;
   text-align: center;
   padding-top: 3px;
-  width: 1.5em;
-  height: 1.5em;
-  color: white;
-  font-size: 1em;
-  font-family: @numbersFontFamily;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   position: absolute;
-  span {
-    width: fit-content;
-    text-align: center;
-    border-radius: 10px;
-    left: 40px;
-    bottom: 40px;
-    position: absolute;
-    display: none;
-  }
 }
-
 .nums-view:hover {
   cursor: help;
   span {
     display: block;
   }
 }
+.num-name {
+  width: fit-content;
+  text-align: center;
+  border-radius: 10px;
+  left: 40px;
+  bottom: 40px;
+  position: absolute;
+  display: none;
+}
 
-.normal-details {
+.det-view {
   display: inline-block;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  margin-right: 60px;
+  margin-bottom: 60px;
+}
+
+.details-name-input {
+  background-color: @primaryColor;
+  font-size: 1.5em;
+  border: none;
+}
+.details-name-input:focus{
+  outline: none;
 }

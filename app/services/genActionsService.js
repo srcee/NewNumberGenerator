@@ -36,6 +36,12 @@ genApp.factory('genActionsService', ['genFactory', function (genFactory) {
         return 'rgb(' + r() + ',' + r() + ',' + r() + ')';
     }
 
+    function deleteNumber(idx, currentGenerator) {
+        console.log(currentGenerator);
+        window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx]})`)
+        currentGenerator.listOfNumbers.splice(idx, 1);
+    };
+
 
     return {
         createGenerator: createGenerator,
@@ -43,6 +49,7 @@ genApp.factory('genActionsService', ['genFactory', function (genFactory) {
         getGeneratorsById: getGeneratorsById,
         hasHiddenGeneratorsChecker: hasHiddenGeneratorsChecker,
         hideGen: hideGen,
-        showGen: showGen
+        showGen: showGen,
+        deleteNumber: deleteNumber
     }
 }])

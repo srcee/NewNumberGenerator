@@ -1,6 +1,6 @@
 <div>
     <div ng-repeat="generator in generators">
-        <div class="view" ng-repeat="num in generator.listOfNumbers track by $index">
+        <div ng-repeat="num in generator.listOfNumbers track by $index">
             <div random-num-display></div>
         </div>
     </div>

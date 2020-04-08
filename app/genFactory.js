@@ -21,8 +21,13 @@ generatorFactory.factory('genFactory', ['$interval', function ($interval) {
         start() {
             this.isWorking = true;
             this.interval = $interval(() => {
-                return this.listOfNumbers.push(Math.floor(Math.random() * 99) + 1);
-            }, 5000, this.count);
+                if (this.count > this.listOfNumbers.length) {
+                    return this.listOfNumbers.push(Math.floor(Math.random() * 99) + 1);
+                } else {
+                    $interval.cancel(this.interval);
+                    this.interval = undefined;
+                }
+            }, 1000);
         }
 
         // Pauses the generation of numbers and subtract 'count' with the number of currently generated numbers.
@@ -30,7 +35,6 @@ generatorFactory.factory('genFactory', ['$interval', function ($interval) {
             $interval.cancel(this.interval);
             this.interval = undefined;
             this.isWorking = false;
-            this.count -= this.listOfNumbers.length;
         }
 
         get getListOfNumbersAsString() {

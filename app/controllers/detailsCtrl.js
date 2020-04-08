@@ -2,27 +2,30 @@ genApp.controller('detailsCtrl', ['$scope', '$routeParams', 'genActionsService',
 
     $scope.currentGenerator = genActionsService.getGeneratorsById($routeParams.id);
     $scope.list = $scope.currentGenerator.listOfNumbers;
-    $scope.action = 'normal';
-    $scope.randomPos = function () {
-        return {
-            position: 'absolute',
-            top: Math.floor((Math.random() * (window.innerHeight - 100)) + 150) + 'px',
-            left: Math.floor((Math.random() * (window.innerWidth - 100)) + 100) + 'px'
-        }
-    }
+    $scope.display = 'normal';
 
     $scope.normalHandler = function () {
-        $scope.action = 'normal';
+        $scope.display = 'normal';
+    };
+    $scope.randomHandler = function () {
+        $scope.display = 'random';
     };
 
     $scope.sortedHandler = function () {
         $scope.sortedList = $scope.currentGenerator.listOfNumbers.slice();
         $scope.sortedList.sort((a, b) => a - b);
-        $scope.action = 'filtered';
+        $scope.display = 'sorted';
     };
 
-    $scope.randomHandler = function () {
-        $scope.action = 'random';
-
+    $scope.deleteNumHandler = function (idx) {
+        genActionsService.deleteNumber(idx, $scope.currentGenerator);
     };
+
+    $scope.pause = function () {
+        $scope.currentGenerator.pause();
+    }
+
+    $scope.resume = function () {
+        $scope.currentGenerator.start();
+    }
 }])

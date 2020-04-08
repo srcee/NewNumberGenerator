@@ -7,19 +7,23 @@
 </div>
 <div class="details">
     <h1>Currently there are
-        <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersLength}} /
-            {{currentGenerator.count}}</span>
-        generated numbers by <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.name}}</span>.
+        <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersLength}}</span> /
+        <input class="details-name-input" ng-style="{'color': currentGenerator.color}" ng-value="currentGenerator.count"
+            ng-model="currentGenerator.count" size="7" ng-focus="pause()" ng-blur="resume()">
+        <br /> generated numbers by
+        <input class="details-name-input" ng-style="{'color': currentGenerator.color}" ng-value="currentGenerator.name"
+            ng-model="currentGenerator.name" size="10">
     </h1>
     <h3>Status: {{currentGenerator.isWorking ? "working" : "not working"}}</h3>
+    <h3>Display: {{display}}</h3>
 
-    <div ng-repeat="num in list track by $index" class="normal-details" ng-if="action==='normal'">
-        <div details-display></div>
+    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display==='normal'">
+        <div details-display ng-click="deleteNumHandler($index)"></div>
     </div>
-    <div ng-repeat="num in sortedList track by $index" class="normal-details" ng-if="action==='filtered'">
-        <div details-display></div>
+    <div ng-repeat="num in sortedList track by $index" class="det-view" ng-if="display==='sorted'">
+        <div details-display ng-click="deleteNumHandler($index)"></div>
     </div>
-    <div ng-repeat="num in list track by $index" ng-if="action==='random'">
-        <div details-random-display></div>
+    <div ng-repeat="num in list track by $index" ng-if="display==='random'">
+        <div details-random-display ng-click="deleteNumHandler($index)"></div>
     </div>
 </div>
