@@ -19,11 +19,12 @@ genApp.factory('genActionsService', ['genFactory', function (genFactory) {
     function hasHiddenGeneratorsChecker() {
         return hasHiddenGenerators;
     }
-
+    // Hides certain generator from the list.
     function hideGen(idx) {
         generatorsArr[idx].isHidden = true;
         hasHiddenGenerators = true;
     }
+    // Unhides all hidden generators.
     function showGen() {
         generatorsArr.map((gen) => gen.isHidden = false);
         hasHiddenGenerators = false;

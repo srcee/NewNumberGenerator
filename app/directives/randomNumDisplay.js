@@ -4,7 +4,7 @@ genApp.directive('randomNumDisplay', function () {
         template: '<div class="nums-view" ng-style="pos">{{num}}<span ng-style="col">{{name}}</span></div>',
         link: function (scope) {
             scope.name = scope.$parent.generator.name;
-            scope.color = scope.$parent.generator.color;
+            scope.color = scope.$parent.generator.color; // TODO
 
             scope.col = {
                 color: scope.color

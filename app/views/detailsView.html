@@ -1,7 +1,7 @@
 <div class="actionBtns">
     <div class="actionBtnsPosition">
         <button ng-click="normalHandler()">Normal</button>
-        <button ng-click="filteredHandler()">Filtered</button>
+        <button ng-click="sortedHandler()">Sorted</button>
         <button ng-click="randomHandler()">Random</button>
     </div>
 </div>
@@ -12,9 +12,14 @@
         generated numbers by <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.name}}</span>.
     </h1>
     <h3>Status: {{currentGenerator.isWorking ? "working" : "not working"}}</h3>
-    <div ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersAsString}}</div>
-</div>
 
-<!-- <div normal-num-display></div> -->
-<!-- <div filtered-num-display></div> -->
-<!-- <div random-num-display></div> -->
+    <div ng-repeat="num in list track by $index" class="normal-details" ng-if="action==='normal'">
+        <div details-display></div>
+    </div>
+    <div ng-repeat="num in sortedList track by $index" class="normal-details" ng-if="action==='filtered'">
+        <div details-display></div>
+    </div>
+    <div ng-repeat="num in list track by $index" ng-if="action==='random'">
+        <div details-random-display></div>
+    </div>
+</div>
