@@ -1,5 +1,7 @@
-<div class="actionBtns">
-    <button class="actionBtnsPosition" ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
+<div class="buttons">
+    <div class="button-container">
+        <button ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
+    </div>
 </div>
 <div ng-if="generators.length > 0">
     <table class="listOfGenerators">

@@ -1,7 +1,15 @@
-genApp.factory('genActionsService', ['genFactory', function (genFactory) {
+genApp.service('genActionsService', ['genFactory', function (genFactory) {
 
     var generatorsArr = []; // List of all generators created.
+    var displayType = 'normal';
     var hasHiddenGenerators = false;
+    var sortNumbersByObj =
+    {
+        normal: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration),
+        sorted: (arr) => arr.sort((a, b) => a.value - b.value),
+        filtered: () => { return },
+        random: () => { return }
+    }
 
     function createGenerator(name, count) {
         let color = randomRgbColor();
@@ -37,19 +45,21 @@ genApp.factory('genActionsService', ['genFactory', function (genFactory) {
     }
 
     function deleteNumber(idx, currentGenerator) {
-        console.log(currentGenerator);
-        window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx]})`)
+        window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx].value})`)
         currentGenerator.listOfNumbers.splice(idx, 1);
     };
 
 
+
     return {
+        hasHiddenGeneratorsChecker: hasHiddenGeneratorsChecker,
+        hideGen: hideGen,
         createGenerator: createGenerator,
         getGenerators: getGenerators,
         getGeneratorsById: getGeneratorsById,
-        hasHiddenGeneratorsChecker: hasHiddenGeneratorsChecker,
-        hideGen: hideGen,
         showGen: showGen,
-        deleteNumber: deleteNumber
+        deleteNumber: deleteNumber,
+        sortNumbersByObj: sortNumbersByObj,
+        displayType: displayType
     }
 }])

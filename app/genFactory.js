@@ -3,9 +3,10 @@
 
 var generatorFactory = angular.module('generatorFactory', []);
 
-generatorFactory.factory('genFactory', ['$interval', function ($interval) {
+generatorFactory.factory('genFactory', ['$rootScope', '$interval', function ($rootScope, $interval) {
 
     class NumberGenerator {
+        timeOfCreation = Date.now();
         listOfNumbers = []; // List of the generated numbers.
         interval;
         isWorking; // Holds the current status of the generator.
@@ -22,7 +23,8 @@ generatorFactory.factory('genFactory', ['$interval', function ($interval) {
             this.isWorking = true;
             this.interval = $interval(() => {
                 if (this.count > this.listOfNumbers.length) {
-                    return this.listOfNumbers.push(Math.floor(Math.random() * 99) + 1);
+                    this.listOfNumbers.push(new Number);
+                    $rootScope.$broadcast('numberCreated');
                 } else {
                     $interval.cancel(this.interval);
                     this.interval = undefined;
@@ -37,10 +39,6 @@ generatorFactory.factory('genFactory', ['$interval', function ($interval) {
             this.isWorking = false;
         }
 
-        get getListOfNumbersAsString() {
-            return this.listOfNumbers.join(' >>> ');
-        }
-
         get getListOfNumbersLength() {
             return this.listOfNumbers.length;
         }
@@ -52,7 +50,13 @@ generatorFactory.factory('genFactory', ['$interval', function ($interval) {
     }
 
 
+    class Number {
+        value = Math.floor(Math.random() * 99) + 1;
+        timeOfGeneration = Date.now();
+    }
+
+
     return {
-        create: create
+        create: create,
     }
 }]);
