@@ -17,6 +17,7 @@ genApp.controller('detailsCtrl', [
     ) {
         var currentGenerator = genActionsService.allGenerators[$routeParams.id];
         $scope.list = currentGenerator.listOfNumbers;
+        $scope.count = currentGenerator.count;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;
 
@@ -42,11 +43,12 @@ genApp.controller('detailsCtrl', [
         };
 
         $scope.pauseGenerator = function () {
-            $scope.currentGenerator.pause();
+            currentGenerator.pause();
         };
 
-        $scope.resumeGenerator = function () {
-            $scope.currentGenerator.start();
+        $scope.resumeGenerator = function (event) {
+            currentGenerator.count = event.target.value;
+            currentGenerator.start();
         };
 
         $scope.filterHandler = function (data) {

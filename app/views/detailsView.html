@@ -20,9 +20,9 @@
 <div class="details">
 
     <h1>Currently there are
-        <span ng-style="{'color': color}">{{}}</span> /
-        <input class="details-edit-input" ng-style="{'color': color}" ng-value="count" ng-model="count" size="7"
-            ng-focus="pauseGenerator()" ng-blur="resumeGenerator()">
+        <span ng-style="{'color': color}">{{list.length}}</span> /
+        <input class="details-edit-input" ng-style="{'color': color}" ng-value="count" size="7"
+            ng-focus="pauseGenerator()" ng-blur="resumeGenerator($event)">
         <br /> generated numbers by
         <input class="details-edit-input" ng-style="{'color': color}" ng-value="name" ng-model="name" size="10">
     </h1>
