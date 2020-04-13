@@ -205,3 +205,6 @@ button:active {
 .nums-view:hover span {
   display: block;
 }
+.active-button {
+  background-color: #3498DB;
+}
