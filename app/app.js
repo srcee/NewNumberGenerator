@@ -34,12 +34,4 @@ genApp.config(['$locationProvider', '$routeProvider', function ($locationProvide
 }]);
 
 
-genApp.constant('detailsViewsConstant',
-  {
-    normal: 'normal',
-    sorted: 'sorted',
-    random: 'random',
-    filtered: 'filtered'
-  }
-);
 

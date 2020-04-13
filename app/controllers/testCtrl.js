@@ -1,6 +1,6 @@
 genApp.controller('testCtrl', ['$scope', 'genActionsService', function ($scope, genActionsService) {
 
-    $scope.generators = genActionsService.getGenerators();
+    $scope.generators = genActionsService.getAllLocalStorage();
     $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
 
     $scope.pauseHandler = function (idx) {

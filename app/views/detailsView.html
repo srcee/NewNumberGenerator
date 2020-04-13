@@ -1,8 +1,8 @@
 <div class="buttons">
     <div class="button-container" ng-click="displayTypeHandler($event)">
-        <button id="normal">Normal</button>
-        <button id="sorted">Sort</button>
-        <button id="filtered">Filter</button>
+        <button id="byTimeOfGeneration">Sort by generation time</button>
+        <button id="byValueAsc">Sort by value</button>
+        <button id="byPeriod">Filter by period</button>
         <button id="random">Random</button>
     </div>
     <form class="filter-form" ng-if="display==='filtered'">
@@ -17,27 +17,26 @@
 <div class="details">
 
     <h1>Currently there are
-        <span ng-style="{'color': currentGenerator.color}">{{currentGenerator.getListOfNumbersLength}}</span> /
-        <input class="details-edit-input" ng-style="{'color': currentGenerator.color}" ng-value="currentGenerator.count"
-            ng-model="currentGenerator.count" size="7" ng-focus="pauseGenerator()" ng-blur="resumeGenerator()">
+        <span ng-style="{'color': color}">{{}}</span> /
+        <input class="details-edit-input" ng-style="{'color': color}" ng-value="count" ng-model="count" size="7"
+            ng-focus="pauseGenerator()" ng-blur="resumeGenerator()">
         <br /> generated numbers by
-        <input class="details-edit-input" ng-style="{'color': currentGenerator.color}" ng-value="currentGenerator.name"
-            ng-model="currentGenerator.name" size="10">
+        <input class="details-edit-input" ng-style="{'color': color}" ng-value="name" ng-model="name" size="10">
     </h1>
 
-    <h3>Status: {{currentGenerator.isWorking ? "working" : "not working"}}</h3>
+    <h3>Status: {{isWorking ? "working" : "not working"}}</h3>
 
-    <h3>Display: {{display}}</h3>
+    <h3>Display: {{display.info}}</h3>
 
-    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display==='normal'">
+    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display.name==='byTimeOfGeneration'">
         <div details-display ng-click="deleteNumHandler($index)"></div>
     </div>
 
-    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display==='sorted'">
+    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display.name==='byValueAsc'">
         <div details-display ng-click="deleteNumHandler($index)"></div>
     </div>
 
-    <div ng-repeat="num in list track by $index" ng-if="display==='random'">
+    <div ng-repeat="num in list track by $index" ng-if="display.name==='random'">
         <div details-random-display ng-click="deleteNumHandler($index)"></div>
     </div>
 

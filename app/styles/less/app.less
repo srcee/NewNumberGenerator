@@ -176,23 +176,8 @@ button:active {
   }
 }
 
-.nums-view {
-  font-size: 35px;
-  color: white;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  position: absolute;
-  &:hover {
-    cursor: help;
-    span {
-      display: block;
-    }
-  }
-}
-
 .num-name {
+  color: @secondaryColor;
   width: fit-content;
   text-align: center;
   border-radius: 10px;
@@ -249,4 +234,20 @@ button:active {
 }
 .list-button {
   border: none;
+}
+
+.nums-view {
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  &:hover {
+    cursor: help;
+    span {
+      display: block;
+    }
+  }
 }

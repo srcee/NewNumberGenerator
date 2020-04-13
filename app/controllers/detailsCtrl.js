@@ -5,35 +5,40 @@ genApp.controller('detailsCtrl', [
     '$routeParams',
     'genActionsService',
     'detailsViewsConstant',
+    'eventsConstant',
     function (
         $rootScope,
         $scope,
         $route,
         $routeParams,
         genActionsService,
-        detailsViewsConstant
+        detailsViewsConstant,
+        eventsConstant
     ) {
-        $scope.currentGenerator = genActionsService.getGeneratorsById($routeParams.id);
-        $scope.list = $scope.currentGenerator.listOfNumbers;
+        var currentGenerator = genActionsService.allGenerators[$routeParams.id];
+        $scope.list = currentGenerator.listOfNumbers;
+        $scope.color = currentGenerator.color;
+        $scope.name = currentGenerator.name;
+
         $scope.display = genActionsService.displayType;
 
-        $rootScope.$on('numberCreated', function () {
-            $scope.list = $scope.currentGenerator.listOfNumbers;
-            genActionsService.sortNumbersByObj[$scope.display]($scope.list);
+        $rootScope.$on(eventsConstant.numberCreated, function () {
+            $scope.list = currentGenerator.listOfNumbers;
+            genActionsService.sortNumbersByObj[$scope.display.name]($scope.list);
         })
 
         $scope.displayTypeHandler = function (event) {
             if (event.target.id && detailsViewsConstant.hasOwnProperty(event.target.id)) {
-                $scope.display = detailsViewsConstant[event.target.id];
-                genActionsService.displayType = event.target.id;
-                genActionsService.sortNumbersByObj[event.target.id]($scope.list);
-                $route.reload();
+                let type = event.target.id;
+                $scope.display = detailsViewsConstant[type];
+                genActionsService.displayType = detailsViewsConstant[type];
+                genActionsService.sortNumbersByObj[type](currentGenerator.listOfNumbers);
             }
-        }
+        };
 
 
         $scope.deleteNumHandler = function (idx) {
-            genActionsService.deleteNumber(idx, $scope.currentGenerator);
+            genActionsService.deleteNumber(idx, currentGenerator);
         };
 
         $scope.pauseGenerator = function () {
@@ -47,4 +52,5 @@ genApp.controller('detailsCtrl', [
         $scope.filterHandler = function (data) {
             console.log(data);
         };
+
     }])
