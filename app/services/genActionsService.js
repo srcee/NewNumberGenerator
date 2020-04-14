@@ -75,10 +75,14 @@ genApp.service('genActionsService', [
         };
 
         function deleteNumber(idx, currentGenerator) {
-            window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx].value})`)
-            currentGenerator.listOfNumbers.splice(idx, 1);
-            if (!currentGenerator.interval) {
-                currentGenerator.start();
+            let confirm = window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx].value})`)
+            if (confirm) {
+                currentGenerator.listOfNumbers.splice(idx, 1);
+                if (!currentGenerator.interval) {
+                    currentGenerator.start();
+                }
+            } else {
+                return;
             }
         };
 
