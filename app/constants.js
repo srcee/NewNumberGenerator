@@ -28,4 +28,4 @@ genApp.constant('eventsConstant',
     }
 );
 
-genApp.constant('nameOfDataInLocalStorageConstant', 'genAppGeneratorsStorage');
+genApp.constant('nameOfDataInLSConstant', 'genAppGeneratorsStorage');

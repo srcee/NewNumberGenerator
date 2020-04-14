@@ -7,6 +7,8 @@ genApp.service('genActionsService', [
         localStorageService,
         detailsViewsConstant,
     ) {
+        window.onbeforeunload = function () {
+        };
         var allLocalStorage = localStorageService.getGenerators();
         var allGenerators = [];
 
