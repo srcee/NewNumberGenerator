@@ -16,12 +16,15 @@ genApp.controller('detailsCtrl', [
         eventsConstant
     ) {
         var currentGenerator = genActionsService.allGenerators[$routeParams.id];
+
         $scope.list = currentGenerator.listOfNumbers;
         $scope.count = currentGenerator.count;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;
+        $scope.filteredList = [];
 
-        $scope.display = genActionsService.displayType;
+        $scope.display = detailsViewsConstant.byTimeOfGeneration;
+        $scope.lastUsedDisplayType = detailsViewsConstant.byTimeOfGeneration;
 
         $rootScope.$on(eventsConstant.numberCreated, function () {
             $scope.list = currentGenerator.listOfNumbers;
@@ -31,7 +34,10 @@ genApp.controller('detailsCtrl', [
         $scope.displayTypeHandler = function (event) {
             if (event.target.id && detailsViewsConstant.hasOwnProperty(event.target.id)) {
                 let type = event.target.id;
+
+                $scope.lastUsedDisplayType = $scope.display;
                 $scope.display = detailsViewsConstant[type];
+
                 genActionsService.displayType = detailsViewsConstant[type];
                 genActionsService.sortNumbersByObj[type](currentGenerator.listOfNumbers);
             }
@@ -52,7 +58,19 @@ genApp.controller('detailsCtrl', [
         };
 
         $scope.filterHandler = function (data) {
-            console.log(data);
+
+            $scope.filteredList = [];
+            let sortedList = $scope.list.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration);
+            let startTime = sortedList[0].timeOfGeneration + (data.from * 1000);
+            let endTime = sortedList[0].timeOfGeneration + (data.to * 1000);
+
+            $scope.filteredList = $scope.list.filter(number => number.timeOfGeneration >= startTime && number.timeOfGeneration <= endTime);
+
+        };
+
+        $scope.cancelHandler = function () {
+            $scope.display = $scope.lastUsedDisplayType;
+            genActionsService.sortNumbersByObj[$scope.display.name](currentGenerator.listOfNumbers);
         };
 
     }])

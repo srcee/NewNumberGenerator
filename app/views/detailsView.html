@@ -8,12 +8,12 @@
             period</button>
         <button id="random" ng-class="{'active-button': display.name === 'random'}">Random</button>
     </div>
-    <form class="filter-form" ng-if="display.name==='byPeriod'">
+    <form class="filter-form" ng-submit="filterHandler(data)" ng-if="display.name==='byPeriod'">
         <label for="from">from</label>
         <input type="number" required="required" ng-model="data.from"><br />
         <label for="to">to</label>
         <input type="number" required="required" ng-model="data.to"><br />
-        <button ng-disabled="filterForm.$invalid" ng-click="filterHandler(data)">OK</button>
+        <button type="submit" id="submit" ng-disabled="filterForm.$invalid">OK</button>
         <button ng-click="cancelHandler()">Cancel</button>
     </form>
 </div>
@@ -41,6 +41,10 @@
 
     <div ng-repeat="num in list track by $index" ng-if="display.name==='random'">
         <div details-random-display ng-click="deleteNumHandler($index)"></div>
+    </div>
+
+    <div ng-repeat="num in filteredList track by $index" class="det-view" ng-if="display.name === 'byPeriod'">
+        <div details-display ng-click="deleteNumHandler($index)"></div>
     </div>
 
 </div>
