@@ -1,10 +1,11 @@
-genApp.directive('randomNumDisplay', function () {
+genApp.directive('randomNumDisplay', [function () {
     return {
         restrict: 'A',
-        template: '<div class="nums-view" ng-style="pos">{{num.value}}<span class="num-name">{{name}}</span></div>',
-        link: function (scope) {
-            scope.name = scope.$parent.generator.name;
-            scope.color = scope.$parent.generator.color; // TODO
+        templateUrl: '../views/directives/randomNumDisplayView.html',
+        link: function (scope, element, attr) {
+
+            scope.name = attr.name;
+            scope.color = attr.color;
 
             scope.col = {
                 color: scope.color
@@ -16,4 +17,4 @@ genApp.directive('randomNumDisplay', function () {
             };
         }
     };
-});
+}]);

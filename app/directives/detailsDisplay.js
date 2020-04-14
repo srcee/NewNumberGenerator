@@ -1,13 +1,15 @@
 genApp.directive('detailsDisplay', function () {
     return {
         restrict: 'A',
-        template: '<div class="nums-view" ng-style="col"><span class="num-name">{{name}}</span>{{num.value}}</div>',
+        templateUrl: '../views/directives/detailsDisplayView.html',
         link: function (scope) {
-            scope.col = {
+            scope.bgCol = {
                 backgroundColor: scope.color,
-                fontSize: '35px',
-                color: 'white'
-            }
+            };
+
+            scope.col = {
+                color: scope.color
+            };
         }
     };
 });

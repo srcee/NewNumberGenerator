@@ -9,7 +9,6 @@ genApp.controller('listCtrl', [
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
 
         $scope.pauseHandler = function (idx) {
-
             let currentGenerator = $scope.generators[idx];
             if (currentGenerator.isWorking) {
                 currentGenerator.pause();

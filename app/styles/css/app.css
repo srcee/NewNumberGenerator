@@ -103,11 +103,6 @@ button:active {
 .details h1 span {
   font-size: 1.5em;
 }
-.details div {
-  font-size: 2em;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: darkblue;
-}
 .buttons {
   position: relative;
   height: 40px;
@@ -156,7 +151,24 @@ button:active {
 }
 .det-view {
   display: inline-block;
-  margin: 1em 2em 1em 0;
+  margin: 1em 4em 2em 0;
+}
+.nums-view {
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+}
+.nums-view:hover {
+  cursor: help;
+}
+.nums-view:hover span {
+  display: block;
+  z-index: 1;
+  background-color: white;
 }
 .details-edit-input {
   background-color: lightgrey;
@@ -189,21 +201,6 @@ button:active {
 }
 .list-button {
   border: none;
-}
-.nums-view {
-  font-size: 35px;
-  color: white;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  position: absolute;
-}
-.nums-view:hover {
-  cursor: help;
-}
-.nums-view:hover span {
-  display: block;
 }
 .active-button {
   background-color: #3498DB;

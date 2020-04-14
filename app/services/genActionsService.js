@@ -2,15 +2,11 @@ genApp.service('genActionsService', [
     'genFactory',
     'localStorageService',
     'detailsViewsConstant',
-    'nameOfDataInLocalStorageConstant',
     function (
         genFactory,
         localStorageService,
         detailsViewsConstant,
-        nameOfDataInLocalStorageConstant
     ) {
-        window.onbeforeunload = function () {
-        };
         var allLocalStorage = localStorageService.getGenerators();
         var allGenerators = [];
 

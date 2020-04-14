@@ -130,12 +130,6 @@ button:active {
       font-size: 1.5em;
     }
   }
-
-  div {
-    font-size: 2em;
-    font-family: @numbersFontFamily;
-    color: @secondaryColor;
-  }
 }
 
 .buttons {
@@ -189,7 +183,25 @@ button:active {
 
 .det-view {
   display: inline-block;
-  margin: 1em 2em 1em 0;
+  margin: 1em 4em 2em 0;
+}
+
+.nums-view {
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  &:hover {
+    cursor: help;
+    span {
+      display: block;
+      z-index: 1;
+      background-color: white;
+    }
+  }
 }
 
 .details-edit-input {
@@ -209,8 +221,6 @@ button:active {
 
 .list-titles {
   div {
-    // font-family: @fontFamily;
-    // font-size: 1.3em;
     border: 0.1em solid @secondaryColor;
     border-collapse: collapse;
     text-align: center;
@@ -232,24 +242,9 @@ button:active {
     border: 1px solid @secondaryColor;
   }
 }
+
 .list-button {
   border: none;
-}
-
-.nums-view {
-  font-size: 35px;
-  color: white;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  position: absolute;
-  &:hover {
-    cursor: help;
-    span {
-      display: block;
-    }
-  }
 }
 
 .active-button {

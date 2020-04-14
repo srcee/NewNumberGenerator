@@ -1,4 +1,4 @@
-genApp.service('localStorageService', ['nameOfDataInLocalStorageConstant', function (nameOfDataInLocalStorageConstant) {
+genApp.service('localStorageService', ['nameOfDataInLSConstant', function (nameOfDataInLSConstant) {
 
     function setGenerators(value) {
         localStorage.setItem(nameOfDataInLocalStorageConstant, JSON.stringify(value));
@@ -11,10 +11,6 @@ genApp.service('localStorageService', ['nameOfDataInLocalStorageConstant', funct
             return [];
         }
     };
-
-
-
-
 
 
     return {
