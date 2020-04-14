@@ -29,9 +29,7 @@ genApp.service('genActionsService', [
 
 
 
-        window.onbeforeunload = function () {
-            localStorageService.setGenerators(allGenerators);
-        };
+        window.addEventListener('beforeunload', function () { localStorageService.setGenerators(allGenerators); });
 
         var displayType = detailsViewsConstant.byTimeOfGeneration;
         var sortNumbersByObj =
