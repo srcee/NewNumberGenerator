@@ -16,11 +16,12 @@ genApp.controller('detailsCtrl', [
         eventsConstant
     ) {
         var currentGenerator = genActionsService.allGenerators[$routeParams.id];
-
         $scope.list = currentGenerator.listOfNumbers;
         $scope.count = currentGenerator.count;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;
+        $scope.isWorking = currentGenerator.isWorking;
+
         $scope.filteredList = [];
 
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
@@ -29,7 +30,11 @@ genApp.controller('detailsCtrl', [
         $rootScope.$on(eventsConstant.numberCreated, function () {
             $scope.list = currentGenerator.listOfNumbers;
             genActionsService.sortNumbersByObj[$scope.display.name]($scope.list);
-        })
+        });
+
+        $rootScope.$on(eventsConstant.isWorkingChanged, function () {
+            $scope.isWorking = currentGenerator.isWorking;
+        });
 
         $scope.displayTypeHandler = function (event) {
             if (event.target.id && detailsViewsConstant.hasOwnProperty(event.target.id)) {
@@ -48,17 +53,18 @@ genApp.controller('detailsCtrl', [
             genActionsService.deleteNumber(idx, currentGenerator);
         };
 
-        $scope.pauseGenerator = function () {
-            currentGenerator.pause();
+        $scope.editCountHandler = function (event) {
+            currentGenerator.count = event.target.value;
+            if (!currentGenerator.interval) {
+                currentGenerator.start();
+            }
         };
 
-        $scope.resumeGenerator = function (event) {
-            currentGenerator.count = event.target.value;
-            currentGenerator.start();
+        $scope.editNameHandler = function (event) {
+            currentGenerator.name = event.target.value;
         };
 
         $scope.filterHandler = function (data) {
-
             $scope.filteredList = [];
             let sortedList = $scope.list.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration);
             let startTime = sortedList[0].timeOfGeneration + (data.from * 1000);

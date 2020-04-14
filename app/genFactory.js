@@ -34,6 +34,7 @@ generatorFactory.factory('genFactory', [
             // Starts the generation of new random number every 5 sec.
             start() {
                 this.isWorking = true;
+                $rootScope.$broadcast(eventsConstant.isWorkingChanged);
                 this.interval = $interval(() => {
                     if (this.count > this.listOfNumbers.length) {
                         this.listOfNumbers.push(new Number);
@@ -42,6 +43,7 @@ generatorFactory.factory('genFactory', [
                         $interval.cancel(this.interval);
                         this.isWorking = false;
                         this.interval = undefined;
+                        $rootScope.$broadcast(eventsConstant.isWorkingChanged);
                     }
                 }, 1000);
             }
@@ -50,6 +52,7 @@ generatorFactory.factory('genFactory', [
             pause() {
                 $interval.cancel(this.interval);
                 this.isWorking = false;
+                $rootScope.$broadcast(eventsConstant.isWorkingChanged);
             }
 
             get getListOfNumbersLength() {

@@ -1,5 +1,7 @@
 <div class="buttons">
+
     <div class="button-container" ng-click="displayTypeHandler($event)">
+
         <button id="byTimeOfGeneration" ng-class="{'active-button' :display.name === 'byTimeOfGeneration'}">Sort by
             generation time</button>
         <button id="byValueAsc" ng-class="{'active-button': display.name === 'byValueAsc'}">Sort by
@@ -7,24 +9,37 @@
         <button id="byPeriod" ng-class="{'active-button': display.name === 'byPeriod'}">Filter by
             period</button>
         <button id="random" ng-class="{'active-button': display.name === 'random'}">Random</button>
+
     </div>
+
     <form class="filter-form" ng-submit="filterHandler(data)" ng-if="display.name==='byPeriod'">
+
         <label for="from">from</label>
         <input type="number" required="required" ng-model="data.from"><br />
+
         <label for="to">to</label>
         <input type="number" required="required" ng-model="data.to"><br />
+
         <button type="submit" id="submit" ng-disabled="filterForm.$invalid">OK</button>
         <button ng-click="cancelHandler()">Cancel</button>
+
     </form>
+
 </div>
+
 <div class="details">
 
     <h1>Currently there are
         <span ng-style="{'color': color}">{{list.length}}</span> /
+
         <input class="details-edit-input" ng-style="{'color': color}" ng-value="count" size="7"
-            ng-focus="pauseGenerator()" ng-blur="resumeGenerator($event)">
+            ng-blur="editCountHandler($event)">
+
         <br /> generated numbers by
-        <input class="details-edit-input" ng-style="{'color': color}" ng-value="name" ng-model="name" size="10">
+
+        <input class="details-edit-input" ng-style="{'color': color}" ng-value="name" ng-model="name" size="10"
+            ng-blur="editNameHandler($event)">
+
     </h1>
 
     <h3>Status: {{isWorking ? "working" : "not working"}}</h3>

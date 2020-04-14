@@ -25,6 +25,7 @@ genApp.constant('detailsViewsConstant',
 genApp.constant('eventsConstant',
     {
         numberCreated: 'numberCreated',
+        isWorkingChanged: 'isWorkingChanged'
     }
 );
 
