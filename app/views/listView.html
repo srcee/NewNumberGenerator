@@ -3,7 +3,9 @@
         <button ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
     </div>
 </div>
+
 <div ng-if="generators.length > 0">
+
     <table class="listOfGenerators">
         <tr>
             <th>Name of the number generator</th>
@@ -11,6 +13,7 @@
             <th>Color</th>
             <th>Details</th>
         </tr>
+
         <tr ng-repeat="generator in generators track by $index" ng-hide="generator.isHidden">
             <td>{{generator.name}}</td>
             <td>{{generator.getListOfNumbersLength}}</td>
@@ -30,4 +33,5 @@
             </td>
         </tr>
     </table>
+
 </div>

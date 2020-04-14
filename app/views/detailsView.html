@@ -2,23 +2,33 @@
 
     <div class="button-container" ng-click="displayTypeHandler($event)">
 
-        <button id="byTimeOfGeneration" ng-class="{'active-button' :display.name === 'byTimeOfGeneration'}">Sort by
-            generation time</button>
-        <button id="byValueAsc" ng-class="{'active-button': display.name === 'byValueAsc'}">Sort by
-            value</button>
-        <button id="byPeriod" ng-class="{'active-button': display.name === 'byPeriod'}">Filter by
-            period</button>
-        <button id="random" ng-class="{'active-button': display.name === 'random'}">Random</button>
+        <button id="byTimeOfGeneration" ng-class="{'active-button' :display.name === 'byTimeOfGeneration'}">
+            Sort by generation time
+        </button>
+
+        <button id="byValueAsc" ng-class="{'active-button': display.name === 'byValueAsc'}">
+            Sort by value
+        </button>
+
+        <button id="byPeriod" ng-class="{'active-button': display.name === 'byPeriod'}">
+            Filter by period
+        </button>
+
+        <button id="random" ng-class="{'active-button': display.name === 'random'}">
+            Random
+        </button>
 
     </div>
 
     <form class="filter-form" ng-submit="filterHandler(data)" ng-if="display.name==='byPeriod'">
 
         <label for="from">from</label>
-        <input type="number" required="required" ng-model="data.from"><br />
+        <input type="number" required="required" ng-model="data.from">
+        <br />
 
         <label for="to">to</label>
-        <input type="number" required="required" ng-model="data.to"><br />
+        <input type="number" required="required" ng-model="data.to">
+        <br />
 
         <button type="submit" id="submit" ng-disabled="filterForm.$invalid">OK</button>
         <button ng-click="cancelHandler()">Cancel</button>

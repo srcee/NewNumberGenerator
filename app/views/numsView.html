@@ -1,7 +1,5 @@
-<div>
-    <div ng-repeat="generator in generators">
-        <div ng-repeat="num in generator.listOfNumbers track by $index">
-            <div random-num-display name={{generator.name}} color={{generator.color}}></div>
-        </div>
+<div ng-repeat="generator in generators">
+    <div ng-repeat="num in generator.listOfNumbers track by $index">
+        <div random-num-display name={{generator.name}} color={{generator.color}}></div>
     </div>
 </div>
