@@ -7,27 +7,27 @@ genApp.config(['$locationProvider', '$routeProvider', function ($locationProvide
 
   $routeProvider
     .when('/', {
-      templateUrl: 'views/createView.html',
+      templateUrl: 'templates/views/createView.html',
       controller: 'createCtrl'
     })
     .when('/create', {
-      templateUrl: 'views/createView.html',
+      templateUrl: 'templates/views/createView.html',
       controller: 'createCtrl'
     })
     .when('/list', {
-      templateUrl: 'views/listView.html',
+      templateUrl: 'templates/views/listView.html',
       controller: 'listCtrl'
     })
     .when('/num-view', {
-      templateUrl: 'views/numsView.html',
+      templateUrl: 'templates/views/numsView.html',
       controller: 'numsViewCtrl'
     })
     .when('/details/:id', {
-      templateUrl: 'views/detailsView.html',
+      templateUrl: 'templates/views/detailsView.html',
       controller: 'detailsCtrl'
     })
     .when('/test', {
-      templateUrl: 'views/test.html',
+      templateUrl: 'templates/views/test.html',
       controller: 'testCtrl'
     })
     .otherwise({ redirectTo: '/' });

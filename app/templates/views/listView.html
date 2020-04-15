@@ -21,7 +21,7 @@
             <td><a ng-href="#/details/{{$index}}">check</a></td>
 
             <td>
-                <button ng-click="pauseHandler($index)" ng-disabled="!generator.interval">
+                <button ng-click="pauseHandler($index)" ng-disabled="!generator.randomizer">
                     {{generator.isWorking ? "Pause" : "Resume"}}
                 </button>
             </td>
@@ -35,3 +35,5 @@
     </table>
 
 </div>
+
+<div delete-dialog info="info"></div>

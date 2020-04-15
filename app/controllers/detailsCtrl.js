@@ -1,7 +1,6 @@
 genApp.controller('detailsCtrl', [
     '$rootScope',
     '$scope',
-    '$route',
     '$routeParams',
     'genActionsService',
     'detailsViewsConstant',
@@ -9,7 +8,6 @@ genApp.controller('detailsCtrl', [
     function (
         $rootScope,
         $scope,
-        $route,
         $routeParams,
         genActionsService,
         detailsViewsConstant,
@@ -22,10 +20,10 @@ genApp.controller('detailsCtrl', [
         $scope.name = currentGenerator.name;
         $scope.isWorking = currentGenerator.isWorking;
 
-        $scope.filteredList = [];
-
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
         $scope.lastUsedDisplayType = detailsViewsConstant.byTimeOfGeneration;
+
+        $scope.filteredList = [];
 
         $rootScope.$on(eventsConstant.numberCreated, function () {
             $scope.list = currentGenerator.listOfNumbers;
@@ -50,7 +48,20 @@ genApp.controller('detailsCtrl', [
 
 
         $scope.deleteNumHandler = function (idx) {
-            genActionsService.deleteNumber(idx, currentGenerator);
+            let currentNum = currentGenerator.listOfNumbers[idx];
+            let dialogInfo = {
+                confirmHandler: function () {
+                    genActionsService.deleteNumber(idx, currentGenerator);
+                },
+                message: {
+                    value: currentNum.value,
+                    generateDate: currentNum.timeOfGeneration,
+                },
+                messageHtmlUrl: './templates/directives/deleteDialogViews/numInfoPartial.html'
+            }
+
+            $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
+
         };
 
         $scope.editCountHandler = function (event) {

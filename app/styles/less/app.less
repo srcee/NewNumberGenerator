@@ -1,9 +1,18 @@
 @primaryColor: lightgrey;
 @secondaryColor: darkblue;
+@dialogPrimaryColor: white;
 
-@fontFamily: 'Courier New', Courier, monospace;
+@fontFamily: "Lucida Console", Courier, monospace;
 @numbersFontFamily: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
+@keyframes slideAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 * {
   padding: 0;
@@ -249,4 +258,73 @@ button:active {
 
 .active-button {
   background-color: #3498DB;
+}
+
+.dialog-layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.dialog-container {
+  width: 550px;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: @dialogPrimaryColor;
+  border: 2px solid @secondaryColor;
+  border-radius: 10px;
+  transition: 2s;
+  box-shadow: 10px 10px 10px @primaryColor;
+  text-align: center;
+  animation: 0.3s ease-out 0s 1 slideAnimation;
+  z-index: 2;
+}
+
+.dialog-header {
+  padding: 10px;
+  font-family: @fontFamily;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: @secondaryColor;
+  color: @dialogPrimaryColor;
+}
+
+.dialog-body {
+  margin: 20px 0 20px;
+  padding-bottom: 10px;
+  line-height: 30px;
+  font-family: @fontFamily;
+  border-bottom: 1px solid @secondaryColor;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.dialog-body-header {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.dialog-body-info {
+  margin: 15px 0 0 15px;
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  span {
+    color: @secondaryColor;
+    font-style: italic;
+  }
+}
+
+.dialog-footer {
+  width: 100%;
+  text-align: center;
+  button {
+    margin-right: 10px;
+  }
 }

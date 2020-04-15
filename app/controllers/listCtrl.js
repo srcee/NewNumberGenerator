@@ -1,12 +1,17 @@
 genApp.controller('listCtrl', [
     '$scope',
+    '$rootScope',
     'genActionsService',
+    'eventsConstant',
     function (
         $scope,
+        $rootScope,
         genActionsService,
+        eventsConstant
     ) {
         $scope.generators = genActionsService.allGenerators;
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
+
 
         $scope.pauseHandler = function (idx) {
             let currentGenerator = $scope.generators[idx];
@@ -18,15 +23,27 @@ genApp.controller('listCtrl', [
         };
 
         $scope.deleteHandler = function (idx) {
-            $scope.generators.splice(idx, 1);
+            let currentGenerator = $scope.generators[idx]
+            let dialogInfo = {
+                confirmHandler: function () {
+                    genActionsService.deleteGenerator(idx);
+                },
+                message: {
+                    name: currentGenerator.name,
+                    createDate: currentGenerator.timeOfCreation,
+                    generatedNumbers: currentGenerator.listOfNumbers.length,
+                    count: currentGenerator.count
+                },
+                messageHtmlUrl: './templates/directives/deleteDialogViews/genInfoPartial.html'
+            }
+
+            $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
         };
 
         $scope.hideHandler = function (idx) {
             genActionsService.hideGen(idx);
-            $scope.disabledBtn = true;
         };
         $scope.showAllHandler = function () {
             genActionsService.showGen();
-            $scope.disabledBtn = false;
         };
     }]);

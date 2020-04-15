@@ -1,7 +1,7 @@
-genApp.directive('detailsDisplay', function () {
+genApp.directive('detailsDisplay', [function () {
     return {
         restrict: 'A',
-        templateUrl: '../views/directives/detailsDisplayView.html',
+        templateUrl: '../templates/directives/detailsDisplayView.html',
         link: function (scope) {
             scope.bgCol = {
                 backgroundColor: scope.color,
@@ -12,4 +12,4 @@ genApp.directive('detailsDisplay', function () {
             };
         }
     };
-});
+}]);

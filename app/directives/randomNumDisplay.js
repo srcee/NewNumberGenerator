@@ -1,7 +1,7 @@
 genApp.directive('randomNumDisplay', [function () {
     return {
         restrict: 'A',
-        templateUrl: '../views/directives/randomNumDisplayView.html',
+        templateUrl: '../templates/directives/randomNumDisplayView.html',
         link: function (scope, element, attr) {
 
             scope.name = attr.name;

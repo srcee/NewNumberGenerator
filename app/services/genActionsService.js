@@ -7,30 +7,10 @@ genApp.service('genActionsService', [
         localStorageService,
         detailsViewsConstant,
     ) {
-        window.onbeforeunload = function () {
-        };
-        var allLocalStorage = localStorageService.getGenerators();
-        var allGenerators = [];
-
-        if (allLocalStorage.length > 0) {
-            allLocalStorage.map(gen => {
-                let list = gen.listOfNumbers;
-                let newGen = genFactory.createGenerator(gen.name, gen.count, gen.color);
-                newGen.listOfNumbers = list;
-                newGen.isWorking = gen.isWorking;
-                newGen.isHidden = gen.isHidden;
-
-                if (newGen.isWorking === true) {
-                    newGen.start();
-                }
-                allGenerators.push(newGen);
-            });
-        };
-
-
-
         window.addEventListener('beforeunload', function () { localStorageService.setGenerators(allGenerators); });
 
+        var allLocalStorage = localStorageService.getGenerators();
+        var allGenerators = [];
         var displayType = detailsViewsConstant.byTimeOfGeneration;
         var sortNumbersByObj =
         {
@@ -39,9 +19,23 @@ genApp.service('genActionsService', [
             byPeriod: () => { return },
             random: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration)
         };
-        var filterObj =
-        {
+
+        if (allLocalStorage.length > 0) {
+            allLocalStorage.map(gen => {
+                let newGen = genFactory.createGenerator(gen.name, gen.count, gen.color);
+                newGen.listOfNumbers = gen.listOfNumbers;
+                newGen.isWorking = gen.isWorking;
+                newGen.isHidden = gen.isHidden;
+                newGen.randomizer = gen.randomizer;
+                newGen.timeOfCreation = gen.timeOfCreation;
+
+                if (newGen.isWorking === true) {
+                    newGen.start();
+                }
+                allGenerators.push(newGen);
+            });
         };
+
 
 
         function createNewGenerator(name, count) {
@@ -75,15 +69,14 @@ genApp.service('genActionsService', [
         };
 
         function deleteNumber(idx, currentGenerator) {
-            let confirm = window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx].value})`)
-            if (confirm) {
-                currentGenerator.listOfNumbers.splice(idx, 1);
-                if (!currentGenerator.interval) {
-                    currentGenerator.start();
-                }
-            } else {
-                return;
+            currentGenerator.listOfNumbers.splice(idx, 1);
+            if (!currentGenerator.randomizer) {
+                currentGenerator.start();
             }
+        };
+
+        function deleteGenerator(idx) {
+            allGenerators.splice(idx, 1);
         };
 
 
@@ -93,9 +86,9 @@ genApp.service('genActionsService', [
             createNewGenerator: createNewGenerator,
             showGen: showGen,
             deleteNumber: deleteNumber,
+            deleteGenerator: deleteGenerator,
             allGenerators: allGenerators,
             sortNumbersByObj: sortNumbersByObj,
-            filterObj: filterObj,
             displayType: displayType
         }
     }])

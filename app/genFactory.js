@@ -5,15 +5,15 @@ var generatorFactory = angular.module('generatorFactory', []);
 
 generatorFactory.factory('genFactory', [
     '$rootScope',
-    '$interval',
+    '$timeout',
     'eventsConstant',
     function (
         $rootScope,
-        $interval,
+        $timeout,
         eventsConstant
     ) {
 
-        class Number {
+        class RandomNumber {
             value = Math.floor(Math.random() * 99) + 1;
             timeOfGeneration = Date.now();
         };
@@ -21,7 +21,7 @@ generatorFactory.factory('genFactory', [
         class NumberGenerator {
             timeOfCreation = Date.now();
             listOfNumbers = []; // List of the generated numbers.
-            interval;
+            randomizer;
             isWorking; // Holds the current status of the generator.
             isHidden = false;
 
@@ -29,36 +29,48 @@ generatorFactory.factory('genFactory', [
                 this.name = name;
                 this.count = count;
                 this.color = color;
-            }
+            };
 
-            // Starts the generation of new random number every 5 sec.
+            // Starts the generation of new random number every random second.
             start() {
                 this.isWorking = true;
                 $rootScope.$broadcast(eventsConstant.isWorkingChanged);
-                this.interval = $interval(() => {
-                    if (this.count > this.listOfNumbers.length) {
-                        this.listOfNumbers.push(new Number);
-                        $rootScope.$broadcast(eventsConstant.numberCreated);
-                    } else {
-                        $interval.cancel(this.interval);
-                        this.isWorking = false;
-                        this.interval = undefined;
-                        $rootScope.$broadcast(eventsConstant.isWorkingChanged);
-                    }
-                }, 1000);
-            }
 
-            // Pauses the generation of numbers and subtract 'count' with the number of currently generated numbers.
+                let randomSeconds = Math.floor(Math.random() * 10) + 1;
+                this.randomizer = $timeout(() => {
+                    if (this.count > this.listOfNumbers.length) {
+                        this.listOfNumbers.push(new RandomNumber);
+                        $rootScope.$broadcast(eventsConstant.numberCreated);
+
+                        // Checks if this new RandomNumber was the last number to be generated.
+                        this.count > this.listOfNumbers.length ? this.start() : this.stop();
+
+                    } else {
+                        this.stop();
+                    }
+
+                }, randomSeconds * 1000);
+            };
+
             pause() {
-                $interval.cancel(this.interval);
+                $timeout.cancel(this.randomizer);
+
+                this.isWorking = false;
+                $rootScope.$broadcast(eventsConstant.isWorkingChanged);
+            };
+
+            stop() {
+                $timeout.cancel(this.randomizer);
+                this.randomizer = undefined;
+
                 this.isWorking = false;
                 $rootScope.$broadcast(eventsConstant.isWorkingChanged);
             }
 
             get getListOfNumbersLength() {
                 return this.listOfNumbers.length;
-            }
-        }
+            };
+        };
 
         // Creates new instance of NumberGenerator class.
         function createGenerator(name, count, color) {
