@@ -8,8 +8,12 @@ genApp.controller('listCtrl', [
         $scope.generators = genActionsService.allGenerators;
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
 
+        $scope.info;
+        $scope.dialog = false;
+
         $scope.pauseHandler = function (idx) {
             let currentGenerator = $scope.generators[idx];
+            console.log(currentGenerator.isWorking);
             if (currentGenerator.isWorking) {
                 currentGenerator.pause();
             } else {
@@ -17,8 +21,10 @@ genApp.controller('listCtrl', [
             }
         };
 
+
         $scope.deleteHandler = function (idx) {
-            $scope.generators.splice(idx, 1);
+            $scope.info = { idx: idx };
+            $scope.dialog = true;
         };
 
         $scope.hideHandler = function (idx) {

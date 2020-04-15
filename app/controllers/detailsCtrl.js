@@ -22,6 +22,9 @@ genApp.controller('detailsCtrl', [
         $scope.name = currentGenerator.name;
         $scope.isWorking = currentGenerator.isWorking;
 
+        $scope.dialog = false;
+        $scope.info;
+
         $scope.filteredList = [];
 
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
@@ -50,7 +53,11 @@ genApp.controller('detailsCtrl', [
 
 
         $scope.deleteNumHandler = function (idx) {
-            genActionsService.deleteNumber(idx, currentGenerator);
+            $scope.dialog = true;
+            $scope.info = {
+                idx: idx,
+                generator: currentGenerator
+            };
         };
 
         $scope.editCountHandler = function (event) {

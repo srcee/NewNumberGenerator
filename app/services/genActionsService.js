@@ -14,11 +14,12 @@ genApp.service('genActionsService', [
 
         if (allLocalStorage.length > 0) {
             allLocalStorage.map(gen => {
-                let list = gen.listOfNumbers;
                 let newGen = genFactory.createGenerator(gen.name, gen.count, gen.color);
-                newGen.listOfNumbers = list;
+                newGen.listOfNumbers = gen.listOfNumbers;
                 newGen.isWorking = gen.isWorking;
                 newGen.isHidden = gen.isHidden;
+                newGen.randomizer = gen.randomizer;
+                newGen.timeOfCreation = gen.timeOfCreation;
 
                 if (newGen.isWorking === true) {
                     newGen.start();
@@ -75,15 +76,14 @@ genApp.service('genActionsService', [
         };
 
         function deleteNumber(idx, currentGenerator) {
-            let confirm = window.confirm(`Are you sure you want to delete this number? (${currentGenerator.listOfNumbers[idx].value})`)
-            if (confirm) {
-                currentGenerator.listOfNumbers.splice(idx, 1);
-                if (!currentGenerator.interval) {
-                    currentGenerator.start();
-                }
-            } else {
-                return;
+            currentGenerator.listOfNumbers.splice(idx, 1);
+            if (!currentGenerator.randomizer) {
+                currentGenerator.start();
             }
+        };
+
+        function deleteGenerator(idx) {
+            allGenerators.splice(idx, 1);
         };
 
 
@@ -93,6 +93,7 @@ genApp.service('genActionsService', [
             createNewGenerator: createNewGenerator,
             showGen: showGen,
             deleteNumber: deleteNumber,
+            deleteGenerator: deleteGenerator,
             allGenerators: allGenerators,
             sortNumbersByObj: sortNumbersByObj,
             filterObj: filterObj,

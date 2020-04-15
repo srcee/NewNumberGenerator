@@ -1,3 +1,11 @@
+@keyframes slideAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -31,7 +39,7 @@ button {
   border-radius: 10px;
   background: darkblue;
   color: lightgrey;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Lucida Console", Courier, monospace;
   font-weight: bold;
   padding: 0.5em;
   width: auto;
@@ -57,7 +65,7 @@ button:active {
   padding: 2em;
   border-radius: 5px;
   font-size: 1.2em;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Lucida Console", Courier, monospace;
 }
 .create-generator-form label {
   display: block;
@@ -86,7 +94,7 @@ button:active {
   color: darkblue;
   font-size: 1.5em;
   font-weight: bolder;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Lucida Console", Courier, monospace;
   padding: 0.2em;
   border-radius: 10px;
   display: inline-block;
@@ -98,7 +106,7 @@ button:active {
 .details h1 {
   text-align: center;
   font-size: 1.5em;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Lucida Console", Courier, monospace;
 }
 .details h1 span {
   font-size: 1.5em;
@@ -204,4 +212,61 @@ button:active {
 }
 .active-button {
   background-color: #3498DB;
+}
+.dialog-container {
+  width: 500px;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid darkblue;
+  border-radius: 10px;
+  transition: 2s;
+  box-shadow: 10px 10px 10px lightgrey;
+  text-align: center;
+  animation: 0.3s ease-out 0s 1 slideAnimation;
+  z-index: 2;
+}
+.dialog-header {
+  padding: 10px;
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: darkblue;
+  color: white;
+}
+.dialog-body {
+  margin: 20px 0 20px;
+  padding-bottom: 10px;
+  line-height: 30px;
+  font-family: "Lucida Console", Courier, monospace;
+  border-bottom: 3px solid darkblue;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.dialog-body-header {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.dialog-body-info {
+  font-size: 1.2em;
+  font-style: italic;
+}
+.dialog-footer {
+  width: 100%;
+  text-align: center;
+}
+.dialog-footer button {
+  margin-right: 10px;
+}
+.dialog-layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  overflow: auto;
 }
