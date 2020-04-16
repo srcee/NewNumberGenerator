@@ -20,14 +20,6 @@ genApp.controller('detailsCtrl', [
         $scope.name = currentGenerator.name;
         $scope.isWorking = currentGenerator.isWorking;
 
-<<<<<<< HEAD
-=======
-        $scope.dialog = false;
-        $scope.info;
-
-        $scope.filteredList = [];
-
->>>>>>> 92dd1ff7143e25a6d0ab05e9ed603c68d5f252a4
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
         $scope.lastUsedDisplayType = detailsViewsConstant.byTimeOfGeneration;
 
@@ -56,7 +48,6 @@ genApp.controller('detailsCtrl', [
 
 
         $scope.deleteNumHandler = function (idx) {
-<<<<<<< HEAD
             let currentNum = currentGenerator.listOfNumbers[idx];
             let dialogInfo = {
                 confirmHandler: function () {
@@ -71,13 +62,6 @@ genApp.controller('detailsCtrl', [
 
             $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
 
-=======
-            $scope.dialog = true;
-            $scope.info = {
-                idx: idx,
-                generator: currentGenerator
-            };
->>>>>>> 92dd1ff7143e25a6d0ab05e9ed603c68d5f252a4
         };
 
         $scope.editCountHandler = function (event) {
