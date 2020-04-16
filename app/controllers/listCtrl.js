@@ -12,9 +12,15 @@ genApp.controller('listCtrl', [
         $scope.generators = genActionsService.allGenerators;
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
 
+<<<<<<< HEAD
+=======
+        $scope.info;
+        $scope.dialog = false;
+>>>>>>> 92dd1ff7143e25a6d0ab05e9ed603c68d5f252a4
 
         $scope.pauseHandler = function (idx) {
             let currentGenerator = $scope.generators[idx];
+            console.log(currentGenerator.isWorking);
             if (currentGenerator.isWorking) {
                 currentGenerator.pause();
             } else {
@@ -22,7 +28,9 @@ genApp.controller('listCtrl', [
             }
         };
 
+
         $scope.deleteHandler = function (idx) {
+<<<<<<< HEAD
             let currentGenerator = $scope.generators[idx]
             let dialogInfo = {
                 confirmHandler: function () {
@@ -38,6 +46,10 @@ genApp.controller('listCtrl', [
             }
 
             $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
+=======
+            $scope.info = { idx: idx };
+            $scope.dialog = true;
+>>>>>>> 92dd1ff7143e25a6d0ab05e9ed603c68d5f252a4
         };
 
         $scope.hideHandler = function (idx) {
