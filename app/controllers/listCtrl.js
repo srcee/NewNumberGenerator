@@ -41,9 +41,11 @@ genApp.controller('listCtrl', [
 
         $scope.hideHandler = function (idx) {
             genActionsService.hideGen(idx);
+            $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
         };
 
         $scope.showAllHandler = function () {
             genActionsService.showGen();
+            $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
         };
     }]);
