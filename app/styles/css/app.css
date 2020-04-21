@@ -275,17 +275,13 @@ button:active {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.dialog-body-header {
-  font-size: 1.3em;
-  font-weight: bold;
-}
-.dialog-body-info {
+.dialog-body div {
   margin: 15px 0 0 15px;
   text-align: left;
   font-size: 1.1em;
   font-weight: bold;
 }
-.dialog-body-info span {
+.dialog-body div span {
   color: darkblue;
   font-style: italic;
 }

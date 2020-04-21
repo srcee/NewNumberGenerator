@@ -28,6 +28,8 @@ genApp.controller('listCtrl', [
             let dialogInfo = {
                 confirmHandler: () => genActionsService.deleteGenerator(idx),
                 messageHtmlUrl: './templates/directives/deleteDialogViews/genInfoPartial.html',
+                containerName: 'DELETE GENERATOR CONFIRMATION',
+                headerMessage: 'Are to sure you want to delete this generator?',
                 message: {
                     name: currentGenerator.name,
                     createDate: currentGenerator.timeOfCreation,

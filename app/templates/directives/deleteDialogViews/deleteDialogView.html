@@ -1,10 +1,10 @@
 <div class="dialog-layout" ng-click="cancelHandler()" ng-if="isShown">
     <div id="dialogContainer" class="dialog-container">
 
-        <div class="dialog-header">DELETE CONFIRMATION</div>
+        <div class="dialog-header">{{containerName}}</div>
         <div class="dialog-body">
-            <div class="dialog-body-header">Are you sure you want to delete it?</div>
-            <div class="dialog-body-info" ng-include="msgHtmlUrl"></div>
+            <h3>{{headerMessage}}</h3>
+            <div ng-include="msgHtmlUrl"></div>
         </div>
 
         <div class="dialog-footer">

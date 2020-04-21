@@ -6,12 +6,16 @@ genApp.directive('deleteDialog', ['$rootScope', '$route', 'eventsConstant', func
         link: function (scope) {
             let confirmHandler,
                 cancelHandler;
+
             scope.isShown = false;
 
             $rootScope.$on(eventsConstant.onDialogShown, function (event, info) {
                 confirmHandler = info.confirmHandler;
                 cancelHandler = info.cancelHandler;
+
                 scope.msgHtmlUrl = info.messageHtmlUrl;
+                scope.containerName = info.containerName
+                scope.headerMessage = info.headerMessage;
                 scope.message = info.message;
                 scope.isShown = true;
             });
