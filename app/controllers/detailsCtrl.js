@@ -65,9 +65,12 @@ genApp.controller('detailsCtrl', [
         };
 
         $scope.editCountHandler = function (event) {
-            currentGenerator.count = event.target.value;
-            if (!currentGenerator.interval) {
-                currentGenerator.start();
+            let count = event.target.value;
+            if (count && !isNaN(+count)) {
+                currentGenerator.count = count;
+                if (!currentGenerator.interval) {
+                    currentGenerator.start();
+                }
             }
         };
 

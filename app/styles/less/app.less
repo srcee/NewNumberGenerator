@@ -23,7 +23,7 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*, *:before, *:after, *:focus {
   box-sizing: inherit;
 }
 
@@ -132,6 +132,19 @@ button:active {
     font-size: 1.5em;
     font-family: @fontFamily;
 
+    input {
+      background-color: @primaryColor;
+      font-size: 1.5em;
+      border: none;
+
+      &:focus{
+        border: 2px solid @secondaryColor;
+        border-radius: 10px;
+        background-color: white;
+        outline: none;
+      }
+    }
+    
     span {
       font-size: 1.5em;
     }
@@ -214,16 +227,6 @@ button:active {
       background-color: white;
     }
   }
-}
-
-.details-edit-input {
-  background-color: @primaryColor;
-  font-size: 1.5em;
-  border: none;
-}
-
-.details-edit-input:focus{
-  outline: none;
 }
 
 // TEST list CSS
