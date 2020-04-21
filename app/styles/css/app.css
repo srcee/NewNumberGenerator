@@ -166,6 +166,7 @@ button:active {
 }
 .nums-view {
   font-size: 35px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white;
   text-align: center;
   width: 50px;
