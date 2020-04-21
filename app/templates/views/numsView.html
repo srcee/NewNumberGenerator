@@ -1,6 +1,6 @@
 <div ng-repeat="generator in generators">
     <div ng-repeat="num in generator.listOfNumbers">
-        <div random-num-display name={{generator.name}} color={{generator.color}} value={{num.value}}
+        <div number-display name={{generator.name}} color={{generator.color}} value={{num.value}} type={{type}}
             ng-click="deleteNumHandler($index, generator)"></div>
     </div>
 </div>

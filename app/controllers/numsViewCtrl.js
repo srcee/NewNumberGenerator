@@ -3,13 +3,16 @@ genApp.controller('numsViewCtrl', [
     '$scope',
     'genActionsService',
     'eventsConstant',
+    'detailsViewsConstant',
     function (
         $rootScope,
         $scope,
         genActionsService,
-        eventsConstant
+        eventsConstant,
+        detailsViewsConstant
     ) {
         $scope.generators = genActionsService.allGenerators;
+        $scope.type = detailsViewsConstant.random.name;
 
         $scope.deleteNumHandler = function (idx, generator) {
 

@@ -57,22 +57,26 @@
     <h3>Display: {{display.info}}</h3>
 
     <div ng-repeat="num in list" class="det-view" ng-if="display.name==='byTimeOfGeneration'">
-        <div details-display color={{color}} value={{num.value}} name={{name}} ng-click="deleteNumHandler($index)">
+        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
+            ng-click="deleteNumHandler($index)">
         </div>
     </div>
 
     <div ng-repeat="num in list" class="det-view" ng-if="display.name==='byValueAsc'">
-        <div details-display color={{color}} value={{num.value}} name={{name}} ng-click="deleteNumHandler($index)">
+        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
+            ng-click="deleteNumHandler($index)">
         </div>
     </div>
 
     <div ng-repeat="num in list" ng-if="display.name==='random'">
-        <div details-random-display color={{color}} value={{num.value}} name={{name}}
-            ng-click="deleteNumHandler($index)"></div>
+        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
+            ng-click="deleteNumHandler($index)">
+        </div>
     </div>
 
-    <div ng-repeat="num in filteredList" class="det-view" ng-if="display.name === 'byPeriod'">
-        <div details-display color={{color}} value={{num.value}} name={{name}} ng-click="deleteNumHandler($index)">
+    <div ng-repeat="num in filteredList" class="det-view" ng-if="display.name==='byPeriod'">
+        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
+            ng-click="deleteNumHandler($index)">
         </div>
     </div>
 </div>

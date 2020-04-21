@@ -20,7 +20,9 @@ genApp.controller('detailsCtrl', [
         $scope.isWorking = currentGenerator.isWorking;
 
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
+        $scope.type = $scope.display.name;
         $scope.list = genActionsService.sortNumbersByObj[$scope.display.name](currentGenerator.listOfNumbers);
+
 
         $scope.filteredList = [];
 
@@ -35,13 +37,14 @@ genApp.controller('detailsCtrl', [
 
         $scope.displayTypeHandler = function (event) {
             if (event.target.id && (event.target.id in detailsViewsConstant)) {
-                let type = event.target.id;
+                $scope.type = event.target.id;
 
                 $scope.lastUsedDisplayType = $scope.display;
-                $scope.display = detailsViewsConstant[type];
+                $scope.display = detailsViewsConstant[$scope.type];
 
-                genActionsService.sortNumbersByObj[type](currentGenerator.listOfNumbers);
+                genActionsService.sortNumbersByObj[$scope.type](currentGenerator.listOfNumbers);
             }
+
         };
 
 
@@ -81,6 +84,7 @@ genApp.controller('detailsCtrl', [
 
         $scope.cancelHandler = function () {
             $scope.display = $scope.lastUsedDisplayType;
+            $scope.type = $scope.lastUsedDisplayType.name;
             genActionsService.sortNumbersByObj[$scope.display.name](currentGenerator.listOfNumbers);
         };
 
