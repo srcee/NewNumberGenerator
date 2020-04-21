@@ -1,4 +1,4 @@
-genApp.directive('deleteDialog', ['$rootScope', '$route', 'eventsConstant', function ($rootScope, $route, eventsConstant) {
+genApp.directive('dialogWindow', ['$rootScope', '$route', 'eventsConstant', function ($rootScope, $route, eventsConstant) {
     return {
         restrict: 'A',
         templateUrl: '../templates/directives/deleteDialogViews/deleteDialogView.html',
