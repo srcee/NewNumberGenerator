@@ -8,8 +8,7 @@ genApp.service('genActionsService', [
 
         var allLocalStorage = localStorageService.getGenerators();
         var allGenerators = [];
-        var sortNumbersByObj =
-        {
+        const sortNumbersByObj = {
             byTimeOfGeneration: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration),
             byValueAsc: (arr) => arr.sort((a, b) => a.value - b.value),
             byPeriod: () => { return },
