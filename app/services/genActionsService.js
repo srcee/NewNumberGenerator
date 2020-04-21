@@ -1,11 +1,9 @@
 genApp.service('genActionsService', [
     'genFactory',
     'localStorageService',
-    'detailsViewsConstant',
     function (
         genFactory,
-        localStorageService,
-        detailsViewsConstant
+        localStorageService
     ) {
 
         var allLocalStorage = localStorageService.getGenerators();
@@ -74,6 +72,10 @@ genApp.service('genActionsService', [
             allGenerators.splice(idx, 1);
         };
 
+        function getAllGenerators() {
+            return allGenerators;
+        }
+
         window.addEventListener('beforeunload', function () {
             localStorageService.setGenerators(allGenerators);
         });
@@ -85,7 +87,7 @@ genApp.service('genActionsService', [
             showGen: showGen,
             deleteNumber: deleteNumber,
             deleteGenerator: deleteGenerator,
-            allGenerators: allGenerators,
+            getAllGenerators: getAllGenerators,
             sortNumbersByObj: sortNumbersByObj,
         }
     }])

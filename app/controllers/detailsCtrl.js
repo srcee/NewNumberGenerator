@@ -13,7 +13,7 @@ genApp.controller('detailsCtrl', [
         detailsViewsConstant,
         eventsConstant
     ) {
-        var currentGenerator = genActionsService.allGenerators[$routeParams.id];
+        var currentGenerator = genActionsService.getAllGenerators()[$routeParams.id];
         $scope.count = currentGenerator.count;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;

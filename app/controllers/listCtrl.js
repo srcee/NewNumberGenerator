@@ -9,7 +9,7 @@ genApp.controller('listCtrl', [
         genActionsService,
         eventsConstant
     ) {
-        $scope.generators = genActionsService.allGenerators;
+        $scope.generators = genActionsService.getAllGenerators();
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
 
 
