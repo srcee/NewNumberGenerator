@@ -1,5 +1,8 @@
 <div ng-repeat="generator in generators">
-    <div ng-repeat="num in generator.listOfNumbers track by $index">
-        <div random-num-display name={{generator.name}} color={{generator.color}}></div>
+    <div ng-repeat="num in generator.listOfNumbers">
+        <div random-num-display name={{generator.name}} color={{generator.color}} value={{num.value}}
+            ng-click="deleteNumHandler($index, generator)"></div>
     </div>
 </div>
+
+<div delete-dialog></div>

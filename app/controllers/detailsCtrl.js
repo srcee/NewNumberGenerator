@@ -14,14 +14,13 @@ genApp.controller('detailsCtrl', [
         eventsConstant
     ) {
         var currentGenerator = genActionsService.allGenerators[$routeParams.id];
-        $scope.list = currentGenerator.listOfNumbers;
         $scope.count = currentGenerator.count;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;
         $scope.isWorking = currentGenerator.isWorking;
 
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
-        $scope.lastUsedDisplayType = detailsViewsConstant.byTimeOfGeneration;
+        $scope.list = genActionsService.sortNumbersByObj[$scope.display.name](currentGenerator.listOfNumbers);
 
         $scope.filteredList = [];
 
@@ -35,13 +34,12 @@ genApp.controller('detailsCtrl', [
         });
 
         $scope.displayTypeHandler = function (event) {
-            if (event.target.id && detailsViewsConstant.hasOwnProperty(event.target.id)) {
+            if (event.target.id && (event.target.id in detailsViewsConstant)) {
                 let type = event.target.id;
 
                 $scope.lastUsedDisplayType = $scope.display;
                 $scope.display = detailsViewsConstant[type];
 
-                genActionsService.displayType = detailsViewsConstant[type];
                 genActionsService.sortNumbersByObj[type](currentGenerator.listOfNumbers);
             }
         };
@@ -50,18 +48,15 @@ genApp.controller('detailsCtrl', [
         $scope.deleteNumHandler = function (idx) {
             let currentNum = currentGenerator.listOfNumbers[idx];
             let dialogInfo = {
-                confirmHandler: function () {
-                    genActionsService.deleteNumber(idx, currentGenerator);
-                },
+                confirmHandler: () => genActionsService.deleteNumber(idx, currentGenerator),
+                messageHtmlUrl: './templates/directives/deleteDialogViews/numInfoPartial.html',
                 message: {
                     value: currentNum.value,
                     generateDate: currentNum.timeOfGeneration,
-                },
-                messageHtmlUrl: './templates/directives/deleteDialogViews/numInfoPartial.html'
-            }
+                }
+            };
 
             $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
-
         };
 
         $scope.editCountHandler = function (event) {
@@ -82,7 +77,6 @@ genApp.controller('detailsCtrl', [
             let endTime = sortedList[0].timeOfGeneration + (data.to * 1000);
 
             $scope.filteredList = $scope.list.filter(number => number.timeOfGeneration >= startTime && number.timeOfGeneration <= endTime);
-
         };
 
         $scope.cancelHandler = function () {

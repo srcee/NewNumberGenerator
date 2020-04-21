@@ -1,14 +1,18 @@
 genApp.directive('detailsDisplay', [function () {
     return {
         restrict: 'A',
-        templateUrl: '../templates/directives/detailsDisplayView.html',
-        link: function (scope) {
-            scope.bgCol = {
-                backgroundColor: scope.color,
+        templateUrl: '../templates/directives/numberDisplayView.html',
+        scope: {},
+        link: function (scope, element, attr) {
+
+            scope.value = attr.value;
+            scope.name = attr.name;
+            scope.col = {
+                color: attr.color
             };
 
-            scope.col = {
-                color: scope.color
+            scope.num = {
+                backgroundColor: attr.color,
             };
         }
     };

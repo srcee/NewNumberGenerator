@@ -15,7 +15,6 @@ genApp.controller('listCtrl', [
 
         $scope.pauseHandler = function (idx) {
             let currentGenerator = $scope.generators[idx];
-            console.log(currentGenerator.isWorking);
             if (currentGenerator.isWorking) {
                 currentGenerator.pause();
             } else {
@@ -27,17 +26,15 @@ genApp.controller('listCtrl', [
         $scope.deleteHandler = function (idx) {
             let currentGenerator = $scope.generators[idx]
             let dialogInfo = {
-                confirmHandler: function () {
-                    genActionsService.deleteGenerator(idx);
-                },
+                confirmHandler: () => genActionsService.deleteGenerator(idx),
+                messageHtmlUrl: './templates/directives/deleteDialogViews/genInfoPartial.html',
                 message: {
                     name: currentGenerator.name,
                     createDate: currentGenerator.timeOfCreation,
                     generatedNumbers: currentGenerator.listOfNumbers.length,
                     count: currentGenerator.count
-                },
-                messageHtmlUrl: './templates/directives/deleteDialogViews/genInfoPartial.html'
-            }
+                }
+            };
 
             $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
         };
@@ -45,6 +42,7 @@ genApp.controller('listCtrl', [
         $scope.hideHandler = function (idx) {
             genActionsService.hideGen(idx);
         };
+
         $scope.showAllHandler = function () {
             genActionsService.showGen();
         };

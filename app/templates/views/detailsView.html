@@ -56,26 +56,27 @@
 
     <h3>Display: {{display.info}}</h3>
 
-    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display.name==='byTimeOfGeneration'">
-        <div details-display ng-click="deleteNumHandler($index)"></div>
+    <div ng-repeat="num in list" class="det-view" ng-if="display.name==='byTimeOfGeneration'">
+        <div details-display color={{color}} value={{num.value}} name={{name}} ng-click="deleteNumHandler($index)">
+        </div>
     </div>
 
-    <div ng-repeat="num in list track by $index" class="det-view" ng-if="display.name==='byValueAsc'">
-        <div details-display ng-click="deleteNumHandler($index)"></div>
+    <div ng-repeat="num in list" class="det-view" ng-if="display.name==='byValueAsc'">
+        <div details-display color={{color}} value={{num.value}} name={{name}} ng-click="deleteNumHandler($index)">
+        </div>
     </div>
 
-    <div ng-repeat="num in list track by $index" ng-if="display.name==='random'">
-        <div details-random-display ng-click="deleteNumHandler($index)"></div>
+    <div ng-repeat="num in list" ng-if="display.name==='random'">
+        <div details-random-display color={{color}} value={{num.value}} name={{name}}
+            ng-click="deleteNumHandler($index)"></div>
     </div>
 
-    <div ng-repeat="num in filteredList track by $index" class="det-view" ng-if="display.name === 'byPeriod'">
-        <div details-display ng-click="deleteNumHandler($index)"></div>
+    <div ng-repeat="num in filteredList" class="det-view" ng-if="display.name === 'byPeriod'">
+        <div details-display color={{color}} value={{num.value}} name={{name}} ng-click="deleteNumHandler($index)">
+        </div>
     </div>
+</div>
 
 </div>
 
-<<<<<<< HEAD:app/templates/views/detailsView.html
 <div delete-dialog info="info"></div>
-=======
-<div delete-dialog ng-if="dialog" info="info" dialog="dialog"></div>
->>>>>>> 92dd1ff7143e25a6d0ab05e9ed603c68d5f252a4:app/views/detailsView.html

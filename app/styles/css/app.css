@@ -147,6 +147,9 @@ button:active {
   height: 100%;
   margin-top: 1em;
 }
+.active-button {
+  background-color: #3498DB;
+}
 .num-name {
   color: darkblue;
   width: fit-content;
@@ -187,31 +190,49 @@ button:active {
   outline: none;
 }
 .list {
-  text-align: center;
+  width: 800px;
+  margin: 5% auto;
+}
+.list div {
+  height: 40px;
+  vertical-align: top;
+}
+.list-titles {
+  width: 100%;
 }
 .list-titles div {
-  border: 0.1em solid darkblue;
+  display: inline-block;
+  padding: 5px 0;
+  border: 1px solid darkblue;
   border-collapse: collapse;
   text-align: center;
   font-size: 1em;
   font-weight: bold;
-  display: inline-block;
-  border: 2px solid darkblue;
+  vertical-align: top;
+}
+.list-values {
+  width: 100%;
 }
 .list-values div {
-  border: 0.1em solid darkblue;
-  text-align: center;
-  font-size: 1em;
-  border-collapse: collapse;
   display: inline-block;
-  padding: 1em;
   border: 1px solid darkblue;
+  text-align: center;
 }
-.list-button {
-  border: none;
+.list-titles-name,
+.list-values-name {
+  width: 31%;
 }
-.active-button {
-  background-color: #3498DB;
+.list-titles-nums,
+.list-values-nums {
+  width: 25%;
+}
+.list-titles-color,
+.list-values-color {
+  width: 7%;
+}
+.list-button,
+.list-details {
+  width: 35%;
 }
 .dialog-layout {
   position: fixed;

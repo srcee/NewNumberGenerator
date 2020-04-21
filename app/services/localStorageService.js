@@ -1,12 +1,12 @@
 genApp.service('localStorageService', ['nameOfDataInLSConstant', function (nameOfDataInLSConstant) {
 
-    function setGenerators(value) {
-        localStorage.setItem(nameOfDataInLSConstant, JSON.stringify(value));
+    function setGenerators(generators) {
+        localStorage.setItem(nameOfDataInLSConstant.genAppGeneratorsStorage, JSON.stringify(generators));
     };
 
     function getGenerators() {
-        if (localStorage.hasOwnProperty(nameOfDataInLSConstant)) {
-            return JSON.parse(localStorage[nameOfDataInLSConstant]);;
+        if (nameOfDataInLSConstant.genAppGeneratorsStorage in localStorage) {
+            return JSON.parse(localStorage[nameOfDataInLSConstant.genAppGeneratorsStorage]);;
         } else {
             return [];
         }

@@ -1,21 +1,19 @@
 <div class="list">
     <div class="list-titles">
-        <div>Name of the number generator</div>
-        <div>Generated numbers</div>
-        <div>Color</div>
-        <div>Details</div>
+        <div class="list-titles-name">Name of the number generator</div>
+        <div class="list-titles-nums">Generated numbers</div>
+        <div class="list-titles-color">Color</div>
+        <div class="list-titles-details">Details</div>
     </div>
-    <button ng-click="clicker()">click</button>
-    <div delete-dialog ng-hide="show" info="info"></div>
-    <!-- <div class="list-values" ng-repeat="gen in generators track by $index">
-        <div>{{gen.name}}</div>
-        <div>{{gen.getListOfNumbersLength}}</div>
-        <div ng-style="{'background-color': gen.color}" class="color-box">adsad</div>
-        <div><a ng-href="#/details/{{$index}}">check</a></div>
+    <div class="list-values" ng-repeat="gen in generators track by $index">
+        <div class="list-values-name">{{gen.name}}</div>
+        <div class="list-values-nums">{{gen.getListOfNumbersLength}}</div>
+        <div class="list-values-color" ng-style="{'background-color': gen.color}" class="color-box">adsad</div>
         <div class="list-button">
+            <div><a ng-href="#/details/{{$index}}">check</a></div>
             <div><button ng-click="pauseHandler($index)">{{generator.isWorking ? "Pause" : "Resume"}}</button></div>
             <div><button ng-click="deleteHandler($index)">Delete</button></div>
             <div><button ng-click="hideHandler($index)">Hide</button></div>
         </div>
-    </div> -->
+    </div>
 </div>

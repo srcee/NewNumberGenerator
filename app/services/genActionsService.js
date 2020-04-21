@@ -5,13 +5,11 @@ genApp.service('genActionsService', [
     function (
         genFactory,
         localStorageService,
-        detailsViewsConstant,
+        detailsViewsConstant
     ) {
-        window.addEventListener('beforeunload', function () { localStorageService.setGenerators(allGenerators); });
 
         var allLocalStorage = localStorageService.getGenerators();
         var allGenerators = [];
-        var displayType = detailsViewsConstant.byTimeOfGeneration;
         var sortNumbersByObj =
         {
             byTimeOfGeneration: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration),
@@ -32,11 +30,10 @@ genApp.service('genActionsService', [
                 if (newGen.isWorking === true) {
                     newGen.start();
                 }
+
                 allGenerators.push(newGen);
             });
         };
-
-
 
         function createNewGenerator(name, count) {
             let color = randomRgbColor();
@@ -45,12 +42,10 @@ genApp.service('genActionsService', [
             allGenerators.push(newGen);
         };
 
-
         function hasHiddenGeneratorsChecker() {
             let hasHiddenGenerators = allGenerators.findIndex((item) => item.isHidden === true);
             return hasHiddenGenerators === -1 ? false : true;
         };
-
 
         // Hides certain generator from the list.
         function hideGen(idx) {
@@ -79,6 +74,9 @@ genApp.service('genActionsService', [
             allGenerators.splice(idx, 1);
         };
 
+        window.addEventListener('beforeunload', function () {
+            localStorageService.setGenerators(allGenerators);
+        });
 
         return {
             hasHiddenGeneratorsChecker: hasHiddenGeneratorsChecker,
@@ -89,6 +87,5 @@ genApp.service('genActionsService', [
             deleteGenerator: deleteGenerator,
             allGenerators: allGenerators,
             sortNumbersByObj: sortNumbersByObj,
-            displayType: displayType
         }
     }])
