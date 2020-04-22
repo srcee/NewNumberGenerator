@@ -3,11 +3,13 @@ genApp.controller('listCtrl', [
     '$rootScope',
     'genActionsService',
     'eventsConstant',
+    'dialogWindowMessagesConstant',
     function (
         $scope,
         $rootScope,
         genActionsService,
-        eventsConstant
+        eventsConstant,
+        dialogWindowMessagesConstant
     ) {
         $scope.generators = genActionsService.getAllGenerators();
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
@@ -28,8 +30,8 @@ genApp.controller('listCtrl', [
             let dialogInfo = {
                 confirmHandler: () => genActionsService.deleteGenerator(idx),
                 messageHtmlUrl: './templates/directives/deleteDialogViews/genInfoPartial.html',
-                containerName: 'DELETE GENERATOR CONFIRMATION',
-                headerMessage: 'Are to sure you want to delete this generator?',
+                containerName: dialogWindowMessagesConstant.delete.generator.containerName,
+                headerMessage: dialogWindowMessagesConstant.delete.generator.headerMessage,
                 message: {
                     name: currentGenerator.name,
                     createDate: currentGenerator.timeOfCreation,

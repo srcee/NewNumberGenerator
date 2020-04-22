@@ -5,13 +5,15 @@ genApp.controller('detailsCtrl', [
     'genActionsService',
     'detailsViewsConstant',
     'eventsConstant',
+    'dialogWindowMessagesConstant',
     function (
         $rootScope,
         $scope,
         $routeParams,
         genActionsService,
         detailsViewsConstant,
-        eventsConstant
+        eventsConstant,
+        dialogWindowMessagesConstant
     ) {
         var currentGenerator = genActionsService.getAllGenerators()[$routeParams.id];
         $scope.count = currentGenerator.count;
@@ -53,8 +55,8 @@ genApp.controller('detailsCtrl', [
             let dialogInfo = {
                 confirmHandler: () => genActionsService.deleteNumber(idx, currentGenerator),
                 messageHtmlUrl: './templates/directives/deleteDialogViews/numInfoPartial.html',
-                containerName: 'DELETE NUMBER CONFIRMATION',
-                headerMessage: 'Are to sure you want to delete this number?',
+                containerName: dialogWindowMessagesConstant.delete.number.containerName,
+                headerMessage: dialogWindowMessagesConstant.delete.number.headerMessage,
                 message: {
                     value: currentNum.value,
                     generateDate: currentNum.timeOfGeneration,
