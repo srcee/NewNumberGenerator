@@ -1,11 +1,3 @@
-@keyframes slideAnimation {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 * {
   padding: 0;
   margin: 0;
@@ -18,46 +10,6 @@ html {
 *:after,
 *:focus {
   box-sizing: inherit;
-}
-body {
-  background-color: lightgrey;
-  margin: 0 auto;
-}
-table,
-td,
-th {
-  border: 0.1em solid darkblue;
-  text-align: center;
-  font-size: 1em;
-}
-table {
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-}
-button {
-  border: 0;
-  border-radius: 10px;
-  background: darkblue;
-  color: lightgrey;
-  font-family: "Lucida Console", Courier, monospace;
-  font-weight: bold;
-  padding: 0.5em;
-  width: auto;
-  cursor: pointer;
-  transition: 0.3s background ease;
-}
-button:hover {
-  background: #3498DB;
-}
-button:disabled {
-  background-color: white;
-  color: lightgrey;
-  border-color: lightgrey;
-}
-button:active {
-  position: relative;
-  top: 1px;
 }
 .create-generator-form {
   max-width: 500px;
@@ -104,25 +56,6 @@ button:active {
   background-color: darkblue;
   color: lightgrey;
 }
-.details h1 {
-  text-align: center;
-  font-size: 1.5em;
-  font-family: "Lucida Console", Courier, monospace;
-}
-.details h1 input {
-  background-color: lightgrey;
-  font-size: 1.5em;
-  border: none;
-}
-.details h1 input:focus {
-  border: 2px solid darkblue;
-  border-radius: 10px;
-  background-color: white;
-  outline: none;
-}
-.details h1 span {
-  font-size: 1.5em;
-}
 .buttons {
   position: relative;
   height: 40px;
@@ -162,6 +95,25 @@ button:active {
 .active-button {
   background-color: #3498DB;
 }
+.details h1 {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: "Lucida Console", Courier, monospace;
+}
+.details h1 input {
+  background-color: lightgrey;
+  font-size: 1.5em;
+  border: none;
+}
+.details h1 input:focus {
+  border: 2px solid darkblue;
+  border-radius: 10px;
+  background-color: white;
+  outline: none;
+}
+.details h1 span {
+  font-size: 1.5em;
+}
 .num-name {
   color: darkblue;
   width: fit-content;
@@ -194,50 +146,49 @@ button:active {
   z-index: 1;
   background-color: white;
 }
-.list {
-  width: 800px;
-  margin: 5% auto;
+button {
+  border: 0;
+  border-radius: 10px;
+  background: darkblue;
+  color: lightgrey;
+  font-family: "Lucida Console", Courier, monospace;
+  font-weight: bold;
+  padding: 0.5em;
+  width: auto;
+  cursor: pointer;
+  transition: 0.3s background ease;
 }
-.list div {
-  height: 40px;
-  vertical-align: top;
+button:hover {
+  background: #3498DB;
 }
-.list-titles {
-  width: 100%;
+button:disabled {
+  background-color: white;
+  color: lightgrey;
+  border-color: lightgrey;
 }
-.list-titles div {
-  display: inline-block;
-  padding: 5px 0;
-  border: 1px solid darkblue;
-  border-collapse: collapse;
+button:active {
+  position: relative;
+  top: 1px;
+}
+table,
+td,
+th {
+  border: 0.1em solid darkblue;
   text-align: center;
   font-size: 1em;
-  font-weight: bold;
-  vertical-align: top;
 }
-.list-values {
-  width: 100%;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
 }
-.list-values div {
-  display: inline-block;
-  border: 1px solid darkblue;
-  text-align: center;
-}
-.list-titles-name,
-.list-values-name {
-  width: 31%;
-}
-.list-titles-nums,
-.list-values-nums {
-  width: 25%;
-}
-.list-titles-color,
-.list-values-color {
-  width: 7%;
-}
-.list-button,
-.list-details {
-  width: 35%;
+@keyframes slideAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .dialog-layout {
   position: fixed;
@@ -304,4 +255,53 @@ button:active {
 }
 .dialog-footer button {
   margin-right: 10px;
+}
+.list {
+  width: 800px;
+  margin: 5% auto;
+}
+.list div {
+  height: 40px;
+  vertical-align: top;
+}
+.list-titles {
+  width: 100%;
+}
+.list-titles div {
+  display: inline-block;
+  padding: 5px 0;
+  border: 1px solid darkblue;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  vertical-align: top;
+}
+.list-values {
+  width: 100%;
+}
+.list-values div {
+  display: inline-block;
+  border: 1px solid darkblue;
+  text-align: center;
+}
+.list-titles-name,
+.list-values-name {
+  width: 31%;
+}
+.list-titles-nums,
+.list-values-nums {
+  width: 25%;
+}
+.list-titles-color,
+.list-values-color {
+  width: 7%;
+}
+.list-button,
+.list-details {
+  width: 35%;
+}
+body {
+  background-color: lightgrey;
+  margin: 0 auto;
 }

@@ -1,0 +1,28 @@
+button {
+    border: 0;
+    border-radius: 10px;
+    background: @secondaryColor;
+    color: @primaryColor;
+    font-family: @fontFamily;
+    font-weight: bold;
+    padding: .5em;
+    width: auto;
+    cursor: pointer;
+    transition: .3s background ease;
+  
+    &:hover{
+      background:#3498DB;
+    }
+  
+}
+  
+button:disabled {
+    background-color: white;
+    color: @primaryColor;
+    border-color: @primaryColor;
+}
+  
+button:active {
+    position: relative;
+    top: 1px;
+}

@@ -1,0 +1,71 @@
+.buttons {
+    position: relative;
+    height: 40px;
+    margin-right: 1em;
+
+    .button-container {
+      height: 100%;
+      text-align: right;
+
+      button {
+        height: 100%;
+      }
+    }
+
+    .filter-form {
+      text-align: right;
+      height: 100%;
+      width: 100%;
+      margin-right: 1em;
+
+      label {
+        display: inline-block;
+        text-align: left;
+        width: 2em;
+        height: 100%;
+        padding: 1em 0 .25em;
+      }
+    
+      input {
+        height: 100%;
+        width: 250px;
+        border: 2px solid @secondaryColor;
+        padding: .5rem;
+        border-radius: 5px;
+      }
+      
+      button {
+        height: 100%;
+        margin-top: 1em;
+      }
+    }
+}
+  
+.active-button {
+    background-color: #3498DB;
+}
+
+.details {
+    h1 {
+      text-align: center;
+      font-size: 1.5em;
+      font-family: @fontFamily;
+  
+      input {
+        background-color: @primaryColor;
+        font-size: 1.5em;
+        border: none;
+  
+        &:focus{
+          border: 2px solid @secondaryColor;
+          border-radius: 10px;
+          background-color: white;
+          outline: none;
+        }
+      }
+      
+      span {
+        font-size: 1.5em;
+      }
+    }
+  }

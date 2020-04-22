@@ -1,0 +1,36 @@
+.num-name {
+    color: @secondaryColor;
+    width: fit-content;
+    text-align: center;
+    border-radius: 10px;
+    left: 40px;
+    bottom: 40px;
+    position: absolute;
+    display: none;
+}
+  
+.det-view {
+    display: inline-block;
+    margin: 1em 4em 2em 0;
+}
+  
+.nums-view {
+    font-size: 35px;
+    font-family: @numbersFontFamily;
+    color: white;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+
+    &:hover {
+      cursor: help;
+
+      span {
+        display: block;
+        z-index: 1;
+        background-color: white;
+      }
+    }  
+}
