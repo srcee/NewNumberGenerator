@@ -94,7 +94,7 @@ genApp.controller('detailsCtrl', [
             let currentNum = currentGenerator.listOfNumbers[idx];
             let dialogInfo = {
                 confirmHandler: () => genActionsService.deleteNumber(idx, currentGenerator),
-                messageHtmlUrl: './templates/directives/deleteDialogViews/numInfoPartial.html',
+                messageHtmlUrl: './templates/directives/dialogWindowViews/numInfoPartial.html',
                 containerName: dialogWindowMessagesConstant.delete.number.containerName,
                 headerMessage: dialogWindowMessagesConstant.delete.number.headerMessage,
                 message: {

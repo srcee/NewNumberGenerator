@@ -1,7 +1,7 @@
 genApp.directive('dialogWindow', ['$rootScope', '$route', 'eventsConstant', function ($rootScope, $route, eventsConstant) {
     return {
         restrict: 'A',
-        templateUrl: '../templates/directives/deleteDialogViews/deleteDialogView.html',
+        templateUrl: '../templates/directives/dialogWindowViews/dialogWindowView.html',
         scope: true,
         link: function (scope) {
             let confirmHandler,

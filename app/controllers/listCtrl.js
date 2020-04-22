@@ -29,7 +29,7 @@ genApp.controller('listCtrl', [
             let currentGenerator = $scope.generators[idx]
             let dialogInfo = {
                 confirmHandler: () => genActionsService.deleteGenerator(idx),
-                messageHtmlUrl: './templates/directives/deleteDialogViews/genInfoPartial.html',
+                messageHtmlUrl: './templates/directives/dialogWindowViews/genInfoPartial.html',
                 containerName: dialogWindowMessagesConstant.delete.generator.containerName,
                 headerMessage: dialogWindowMessagesConstant.delete.generator.headerMessage,
                 message: {
