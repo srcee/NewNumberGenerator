@@ -37,5 +37,11 @@ genApp.constant('dialogWindowMessagesConstant', {
             containerName: 'DELETE NUMBER CONFIRMATION',
             headerMessage: 'Are you sure you want to delete this number?'
         }
+    },
+    edit: {
+        inputError: {
+            containerName: 'ERROR: Input not valid!',
+            headerMessage: 'Your input is different than expected. Please try again.'
+        }
     }
 });

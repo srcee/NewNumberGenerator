@@ -4,6 +4,7 @@
 
 @fontFamily: "Lucida Console", Courier, monospace;
 @numbersFontFamily: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+@infoFontfamily: Arial, Helvetica, sans-serif;
 
 @keyframes slideAnimation {
   0% {
@@ -329,12 +330,20 @@ button:active {
   div {
     margin: 15px 0 0 15px;
     text-align: left;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: bold;
     span {
       color: @secondaryColor;
       font-style: italic;
     }
+  }
+  p {
+    padding-top: 1em;
+    font-family: @infoFontfamily;
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: center;
+    color: red;
   }
 }
 

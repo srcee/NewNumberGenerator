@@ -113,6 +113,16 @@ genApp.controller('detailsCtrl', [
                 if (!currentGenerator.interval) {
                     currentGenerator.start();
                 }
+            } else {
+                let dialogInfo = {
+                    confirmHandler: () => event.target.focus(),
+                    cancelHandler: () => event.target.value = currentGenerator.count,
+                    messageHtmlUrl: './templates/directives/dialogWindowViews/editCountFailure.html',
+                    containerName: dialogWindowMessagesConstant.edit.inputError.containerName,
+                    headerMessage: dialogWindowMessagesConstant.edit.inputError.headerMessage,
+                    message: count
+                };
+                $rootScope.$broadcast(eventsConstant.onDialogShown, dialogInfo);
             }
         };
 
