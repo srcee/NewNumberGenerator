@@ -2,6 +2,7 @@ genApp.controller('detailsCtrl', [
     '$rootScope',
     '$scope',
     '$routeParams',
+    '$timeout',
     'genActionsService',
     'detailsViewsConstant',
     'eventsConstant',
@@ -10,23 +11,41 @@ genApp.controller('detailsCtrl', [
         $rootScope,
         $scope,
         $routeParams,
+        $timeout,
         genActionsService,
         detailsViewsConstant,
         eventsConstant,
         dialogWindowMessagesConstant
     ) {
         var currentGenerator = genActionsService.getAllGenerators()[$routeParams.id];
+
+
+        $scope.repeatCycles = resetLimit(); // How many numbers to be displayed /how many cycles are to be made by ng-repeat/.
         $scope.count = currentGenerator.count;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;
         $scope.isWorking = currentGenerator.isWorking;
-
         $scope.display = detailsViewsConstant.byTimeOfGeneration;
-        $scope.type = $scope.display.name;
         $scope.list = genActionsService.sortNumbersByObj[$scope.display.name](currentGenerator.listOfNumbers);
 
+        $scope.stringify = function (x) { return JSON.stringify(x) }
 
-        $scope.filteredList = [];
+        function displayTypeHandler(type) {
+            $scope.lastUsedDisplayType = $scope.display;
+            $scope.display = type;
+        };
+
+        // This function causes ng-repeat to be refreshed.
+        function refreshNgRepeat() {
+            let refreshedList = $scope.list;
+            $scope.list = [];
+            $timeout(() => $scope.list = refreshedList, 1);
+        };
+
+        // This function causes ng-repeat to always show all generated numbers.
+        function resetLimit() {
+            return currentGenerator.count > currentGenerator.listOfNumbers.length ? currentGenerator.count : currentGenerator.listOfNumbers.length;
+        };
 
         $rootScope.$on(eventsConstant.numberCreated, function () {
             $scope.list = currentGenerator.listOfNumbers;
@@ -37,16 +56,32 @@ genApp.controller('detailsCtrl', [
             $scope.isWorking = currentGenerator.isWorking;
         });
 
-        $scope.displayTypeHandler = function (event) {
-            if (event.target.id && (event.target.id in detailsViewsConstant)) {
-                $scope.type = event.target.id;
 
-                $scope.lastUsedDisplayType = $scope.display;
-                $scope.display = detailsViewsConstant[$scope.type];
+        $scope.byTimeOfGenerationHandler = function () {
+            $scope.repeatCycles = resetLimit();
+            displayTypeHandler(detailsViewsConstant.byTimeOfGeneration);
+            genActionsService.sortNumbersByObj[detailsViewsConstant.byTimeOfGeneration.name]($scope.list);
+            refreshNgRepeat();
+        };
 
-                genActionsService.sortNumbersByObj[$scope.type](currentGenerator.listOfNumbers);
-            }
+        $scope.byValueAscHandler = function () {
+            $scope.repeatCycles = resetLimit();
+            displayTypeHandler(detailsViewsConstant.byValueAsc);
+            genActionsService.sortNumbersByObj[detailsViewsConstant.byValueAsc.name]($scope.list);
+            refreshNgRepeat();
+        };
 
+        $scope.byPeriodHandler = function () {
+            displayTypeHandler(detailsViewsConstant.byPeriod);
+            genActionsService.sortNumbersByObj[detailsViewsConstant.byTimeOfGeneration.name]($scope.list);
+            refreshNgRepeat();
+        };
+
+        $scope.randomHandler = function () {
+            $scope.repeatCycles = resetLimit();
+            displayTypeHandler(detailsViewsConstant.random);
+            genActionsService.sortNumbersByObj[detailsViewsConstant.random.name]($scope.list);
+            refreshNgRepeat();
         };
 
 
@@ -81,18 +116,19 @@ genApp.controller('detailsCtrl', [
         };
 
         $scope.filterHandler = function (data) {
-            $scope.filteredList = [];
-            let sortedList = $scope.list.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration);
-            let startTime = sortedList[0].timeOfGeneration + (data.from * 1000);
-            let endTime = sortedList[0].timeOfGeneration + (data.to * 1000);
-
-            $scope.filteredList = $scope.list.filter(number => number.timeOfGeneration >= startTime && number.timeOfGeneration <= endTime);
+            let startTime = $scope.list[0].timeOfGeneration + (data.from * 1000);
+            let endTime = $scope.list[0].timeOfGeneration + (data.to * 1000);
+            let filteredList = $scope.list.filter(number => number.timeOfGeneration >= startTime && number.timeOfGeneration <= endTime);
+            refreshNgRepeat();
+            $scope.repeatCycles = filteredList.length;
         };
 
         $scope.cancelHandler = function () {
             $scope.display = $scope.lastUsedDisplayType;
             $scope.type = $scope.lastUsedDisplayType.name;
-            genActionsService.sortNumbersByObj[$scope.display.name](currentGenerator.listOfNumbers);
+            genActionsService.sortNumbersByObj[$scope.display.name]($scope.list);
+            $scope.repeatCycles = resetLimit();
+            refreshNgRepeat();
         };
 
     }])

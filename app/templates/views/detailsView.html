@@ -1,20 +1,21 @@
 <div class="buttons">
 
-    <div class="button-container" ng-click="displayTypeHandler($event)">
+    <div class="button-container">
 
-        <button id="byTimeOfGeneration" ng-class="{'active-button' :display.name === 'byTimeOfGeneration'}">
+        <button ng-class="{'active-button' :display.name === 'byTimeOfGeneration'}"
+            ng-click="byTimeOfGenerationHandler($event)">
             Sort by generation time
         </button>
 
-        <button id="byValueAsc" ng-class="{'active-button': display.name === 'byValueAsc'}">
+        <button ng-class="{'active-button': display.name === 'byValueAsc'}" ng-click="byValueAscHandler($event)">
             Sort by value
         </button>
 
-        <button id="byPeriod" ng-class="{'active-button': display.name === 'byPeriod'}">
+        <button ng-class="{'active-button': display.name === 'byPeriod'}" ng-click="byPeriodHandler($event)">
             Filter by period
         </button>
 
-        <button id="random" ng-class="{'active-button': display.name === 'random'}">
+        <button ng-class="{'active-button': display.name === 'random'}" ng-click="randomHandler($event)">
             Random
         </button>
 
@@ -56,29 +57,10 @@
 
     <h3>Display: {{display.info}}</h3>
 
-    <div ng-repeat="num in list" class="det-view" ng-if="display.name==='byTimeOfGeneration'">
-        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
+    <div ng-repeat="num in list | limitTo: repeatCycles track by num.timeOfGeneration" class="det-view">
+        <div number-display color={{color}} value={{num.value}} name={{name}} type={{display.name}}
             ng-click="deleteNumHandler($index)">
         </div>
     </div>
-
-    <div ng-repeat="num in list" class="det-view" ng-if="display.name==='byValueAsc'">
-        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
-            ng-click="deleteNumHandler($index)">
-        </div>
-    </div>
-
-    <div ng-repeat="num in list" ng-if="display.name==='random'">
-        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
-            ng-click="deleteNumHandler($index)">
-        </div>
-    </div>
-
-    <div ng-repeat="num in filteredList" class="det-view" ng-if="display.name==='byPeriod'">
-        <div number-display color={{color}} value={{num.value}} name={{name}} type={{type}}
-            ng-click="deleteNumHandler($index)">
-        </div>
-    </div>
-</div>
 
 </div>
