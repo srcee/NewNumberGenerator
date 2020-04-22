@@ -44,12 +44,12 @@
         <span ng-style="{'color': color}">{{list.length}}</span> /
 
         <input type="text" ng-style="{'color': color}" ng-value="count" size="7" maxlength="7"
-            ng-blur="editCountHandler($event)">
+            ng-blur="editCountHandler($event)" ng-keydown="enterHandler($event)">
 
         <br /> generated numbers by
 
         <input ng-style="{'color': color}" required="required" ng-value="name" ng-model="name" size="10" maxlength="10"
-            ng-blur="editNameHandler($event)">
+            ng-blur="editNameHandler($event)" ng-keydown="enterHandler($event)">
 
     </h1>
 

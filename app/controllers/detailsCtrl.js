@@ -56,6 +56,11 @@ genApp.controller('detailsCtrl', [
             $scope.isWorking = currentGenerator.isWorking;
         });
 
+        $scope.enterHandler = function (event) {
+            if (event.key === 'Enter') {
+                event.target.blur();
+            };
+        };
 
         $scope.byTimeOfGenerationHandler = function () {
             $scope.repeatCycles = resetLimit();
