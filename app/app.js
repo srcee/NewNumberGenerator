@@ -22,7 +22,7 @@ genApp.config(['$locationProvider', '$routeProvider', function ($locationProvide
       templateUrl: 'templates/views/numsView.html',
       controller: 'numsViewCtrl'
     })
-    .when('/details/:id', {
+    .when('/details/:id/:displayType', {
       templateUrl: 'templates/views/detailsView.html',
       controller: 'detailsCtrl'
     })

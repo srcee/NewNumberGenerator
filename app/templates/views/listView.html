@@ -1,6 +1,6 @@
 <div class="buttons">
     <div class="button-container">
-        <button ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
+        <button class="btn" ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
     </div>
 </div>
 
@@ -18,18 +18,18 @@
             <td>{{generator.name}}</td>
             <td>{{generator.getListOfNumbersLength}}</td>
             <td ng-style="{'background-color': generator.color}"></td>
-            <td><a ng-href="#/details/{{$index}}">check</a></td>
+            <td><a ng-href="#/details/{{$index}}/{{defaultDisplayType}}">check</a></td>
 
             <td>
-                <button ng-click="pauseHandler($index)" ng-disabled="!generator.randomizer">
+                <button class="btn" ng-click="pauseHandler($index)" ng-disabled="!generator.randomizer">
                     {{generator.isWorking ? "Pause" : "Resume"}}
                 </button>
             </td>
             <td>
-                <button ng-click="deleteHandler($index)">Delete</button>
+                <button class="btn" ng-click="deleteHandler($index)">Delete</button>
             </td>
             <td>
-                <button ng-click="hideHandler($index)">Hide</button>
+                <button class="btn" ng-click="hideHandler($index)">Hide</button>
             </td>
         </tr>
     </table>

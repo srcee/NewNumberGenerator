@@ -1,4 +1,8 @@
 genApp.constant('detailsViewsConstant', {
+    byDefault: {
+        name: 'byTimeOfGeneration',
+        info: 'Sorted by time of generation.'
+    },
     byTimeOfGeneration: {
         name: 'byTimeOfGeneration',
         info: 'Sorted by time of generation.'

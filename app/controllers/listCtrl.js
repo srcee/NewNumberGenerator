@@ -4,16 +4,18 @@ genApp.controller('listCtrl', [
     'genActionsService',
     'eventsConstant',
     'dialogWindowMessagesConstant',
+    'detailsViewsConstant',
     function (
         $scope,
         $rootScope,
         genActionsService,
         eventsConstant,
-        dialogWindowMessagesConstant
+        dialogWindowMessagesConstant,
+        detailsViewsConstant
     ) {
         $scope.generators = genActionsService.getAllGenerators();
         $scope.disabledBtn = genActionsService.hasHiddenGeneratorsChecker();
-
+        $scope.defaultDisplayType = detailsViewsConstant.byDefault.name;
 
         $scope.pauseHandler = function (idx) {
             let currentGenerator = $scope.generators[idx];

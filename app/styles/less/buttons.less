@@ -1,7 +1,9 @@
-button {
+.btn {
+    outline: none;
+    text-decoration: none;
     border: 0;
     border-radius: 10px;
-    background: @secondaryColor;
+    background-color: @secondaryColor;
     color: @primaryColor;
     font-family: @fontFamily;
     font-weight: bold;
@@ -11,15 +13,23 @@ button {
     transition: .3s background ease;
   
     &:hover{
-      background:#3498DB;
+      background-color: @buttonHoverColor;
     }
   
 }
+ 
+.active-button {
+    background-color: @buttonHoverColor;
+}
   
 button:disabled {
-    background-color: white;
+    background-color: @buttonDisabledColor;
     color: @primaryColor;
     border-color: @primaryColor;
+
+    &:hover{
+        background-color: @buttonDisabledColor;
+      }
 }
   
 button:active {

@@ -8,12 +8,6 @@ genApp.service('genActionsService', [
 
         var allLocalStorage = localStorageService.getGenerators();
         var allGenerators = [];
-        const sortNumbersByObj = {
-            byTimeOfGeneration: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration),
-            byValueAsc: (arr) => arr.sort((a, b) => a.value - b.value),
-            byPeriod: () => { return },
-            random: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration)
-        };
 
         if (allLocalStorage.length > 0) {
             allLocalStorage.map(gen => {
@@ -86,7 +80,6 @@ genApp.service('genActionsService', [
             showGen: showGen,
             deleteNumber: deleteNumber,
             deleteGenerator: deleteGenerator,
-            getAllGenerators: getAllGenerators,
-            sortNumbersByObj: sortNumbersByObj,
+            getAllGenerators: getAllGenerators
         }
     }])

@@ -92,9 +92,6 @@ html {
   height: 100%;
   margin-top: 1em;
 }
-.active-button {
-  background-color: #3498DB;
-}
 .details h1 {
   text-align: center;
   font-size: 1.5em;
@@ -146,10 +143,12 @@ html {
   z-index: 1;
   background-color: white;
 }
-button {
+.btn {
+  outline: none;
+  text-decoration: none;
   border: 0;
   border-radius: 10px;
-  background: darkblue;
+  background-color: darkblue;
   color: lightgrey;
   font-family: "Lucida Console", Courier, monospace;
   font-weight: bold;
@@ -158,13 +157,19 @@ button {
   cursor: pointer;
   transition: 0.3s background ease;
 }
-button:hover {
-  background: #3498DB;
+.btn:hover {
+  background-color: #3498DB;
+}
+.active-button {
+  background-color: #3498DB;
 }
 button:disabled {
   background-color: white;
   color: lightgrey;
   border-color: lightgrey;
+}
+button:disabled:hover {
+  background-color: white;
 }
 button:active {
   position: relative;
