@@ -109,10 +109,12 @@ genApp.controller('detailsCtrl', [
         $scope.editCountHandler = function (event) {
             let count = event.target.value;
             if (count && !isNaN(+count)) {
-                currentGenerator.count = count;
+                currentGenerator.count = Math.trunc(count);
+                event.target.value = currentGenerator.count;
                 if (!currentGenerator.interval) {
                     currentGenerator.start();
                 }
+
             } else {
                 let dialogInfo = {
                     confirmHandler: () => event.target.focus(),
