@@ -6,12 +6,12 @@
             generation
             time</a>
         <a id="byValueAsc" class="btn" href="#/details/{{generatorID}}/byValueAsc">Sort by value</a>
-        <a id="byPeriod" class="btn" href="#/details/{{generatorID}}/byPeriod">Filter by period</a>
+        <a id="byPeriod" class="btn" ng-click="byPeriodHandler($event)">Filter by period</a>
         <a id="random" class="btn" href="#/details/{{generatorID}}/random">Random</a>
 
     </div>
 
-    <form class="filter-form" ng-submit="filterHandler(data)" ng-if="displayType==='byPeriod'">
+    <form class="filter-form" ng-submit="filterHandler(data)" ng-if="hasFilter">
 
         <label for="from">from</label>
         <input type="number" required="required" ng-model="data.from">
@@ -50,7 +50,7 @@
     <div class="nums-container">
         <div ng-repeat="num in list track by num.timeOfGeneration" class="det-view">
             <div number-display color={{color}} value={{num.value}} name={{name}} type={{displayType}}
-                ng-click="deleteNumHandler($index)">
+                ng-click="deleteNumHandler($index, num.timeOfGeneration)">
             </div>
         </div>
     </div>

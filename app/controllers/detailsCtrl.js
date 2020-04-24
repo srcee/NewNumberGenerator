@@ -18,7 +18,7 @@ genApp.controller('detailsCtrl', [
         dialogWindowMessagesConstant
     ) {
         var currentGenerator = genActionsService.getAllGenerators()[$routeParams.id];
-        var activeButton = angular.element(document.getElementById($routeParams.displayType));
+        let activeButton = angular.element(document.getElementById($routeParams.displayType));
         activeButton.addClass('active-button');
 
         $scope.generatorID = $routeParams.id;
@@ -28,12 +28,11 @@ genApp.controller('detailsCtrl', [
         var handlerFunctionsObj = {
             byTimeOfGeneration: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration),
             byValueAsc: (arr) => arr.sort((a, b) => a.value - b.value),
-            byPeriod: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration),
             random: (arr) => arr.sort((a, b) => a.timeOfGeneration - b.timeOfGeneration)
         };
 
         $scope.count = currentGenerator.count;
-        $scope.currentCount = currentGenerator.listOfNumbers.length;
+        $scope.currentCount = currentGenerator.getListOfNumbersLength;
         $scope.color = currentGenerator.color;
         $scope.name = currentGenerator.name;
         $scope.isWorking = currentGenerator.isWorking;
@@ -41,7 +40,7 @@ genApp.controller('detailsCtrl', [
 
         $rootScope.$on(eventsConstant.numberCreated, function () {
             $scope.currentCount = currentGenerator.listOfNumbers.length;
-            if ($scope.displayType !== detailsViewsConstant.byPeriod.name) {
+            if (!$scope.hasFilter) {
                 $scope.list = handlerFunctionsObj[$scope.displayType](currentGenerator.listOfNumbers);
             }
         });
@@ -50,16 +49,28 @@ genApp.controller('detailsCtrl', [
             $scope.isWorking = currentGenerator.isWorking;
         });
 
+        $scope.byPeriodHandler = function (event) {
+            $scope.hasFilter = true;
+            angular.element(event.target).addClass('active-button');
+        };
+
         $scope.keyHandler = function (event) {
             if (event.key === 'Enter') {
                 event.target.blur();
             };
         };
 
-        $scope.deleteNumHandler = function (idx) {
-            let currentNum = currentGenerator.listOfNumbers[idx];
+        $scope.deleteNumHandler = function (idx, time) {
+
+            let currentNum = $scope.list[idx];
             let dialogInfo = {
-                confirmHandler: () => genActionsService.deleteNumber(idx, currentGenerator),
+                confirmHandler: () => {
+                    genActionsService.deleteNumber(time, currentGenerator);
+                    $scope.currentCount = currentGenerator.getListOfNumbersLength;
+                    if ($scope.hasFilter) {
+                        $scope.list.splice(idx, 1);
+                    }
+                },
                 messageHtmlUrl: './templates/directives/dialogWindowViews/numInfoPartial.html',
                 containerName: dialogWindowMessagesConstant.delete.number.containerName,
                 headerMessage: dialogWindowMessagesConstant.delete.number.headerMessage,

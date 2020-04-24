@@ -54,7 +54,8 @@ genApp.service('genActionsService', [
             return 'rgb(' + r() + ',' + r() + ',' + r() + ')';
         };
 
-        function deleteNumber(idx, currentGenerator) {
+        function deleteNumber(time, currentGenerator) {
+            let idx = currentGenerator.listOfNumbers.findIndex(n => n.timeOfGeneration === time);
             currentGenerator.listOfNumbers.splice(idx, 1);
             if (!currentGenerator.randomizer) {
                 currentGenerator.start();
