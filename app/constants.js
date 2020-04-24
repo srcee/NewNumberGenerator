@@ -44,7 +44,7 @@ genApp.constant('dialogWindowMessagesConstant', {
     },
     edit: {
         inputError: {
-            containerName: 'ERROR: Input not valid!',
+            containerName: 'ERROR: Input is not valid!',
             headerMessage: 'Your input is different than expected. Please try again.'
         }
     }

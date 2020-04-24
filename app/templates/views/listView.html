@@ -1,37 +1,27 @@
-<div class="buttons">
-    <div class="button-container">
-        <button class="btn" ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
-    </div>
+<div class="button-container">
+    <button class="btn" ng-disabled="!disabledBtn" ng-click="showAllHandler()">Show All</button>
 </div>
 
-<div ng-if="generators.length > 0">
+<div class="table">
+    <div>
+        <div>Name of the number generator</div>
+        <div>Generated numbers</div>
+        <div>Color</div>
+        <div>Details</div>
+    </div>
 
-    <table>
-        <tr>
-            <th>Name of the number generator</th>
-            <th>Current count of generated numbers</th>
-            <th>Color</th>
-            <th>Details</th>
-        </tr>
+    <div ng-repeat="gen in generators track by $index" ng-hide="gen.isHidden">
 
-        <tr ng-repeat="generator in generators track by $index" ng-hide="generator.isHidden">
-            <td>{{generator.name}}</td>
-            <td>{{generator.getListOfNumbersLength}}</td>
-            <td ng-style="{'background-color': generator.color}"></td>
-            <td><a ng-href="#/details/{{$index}}/{{defaultDisplayType}}">check</a></td>
+        <div>{{gen.name}}</div>
+        <div>{{gen.getListOfNumbersLength}}</div>
+        <div ng-style="{'background-color': gen.color}" class="color-box"></div>
+        <div><a ng-href="#/details/{{$index}}/{{defaultDisplayType}}">check</a></div>
 
-            <td>
-                <button class="btn" ng-click="pauseHandler($index)" ng-disabled="!generator.randomizer">
-                    {{generator.isWorking ? "Pause" : "Resume"}}
-                </button>
-            </td>
-            <td>
-                <button class="btn" ng-click="deleteHandler($index)">Delete</button>
-            </td>
-            <td>
-                <button class="btn" ng-click="hideHandler($index)">Hide</button>
-            </td>
-        </tr>
-    </table>
+        <div>
+            <button class="btn" ng-click="pauseHandler($index)">{{gen.isWorking ? "Pause" : "Resume"}}</button>
+            <button class="btn" ng-click="deleteHandler($index)">Delete</button>
+            <button class="btn" ng-click="hideHandler($index)">Hide</button>
+        </div>
 
+    </div>
 </div>

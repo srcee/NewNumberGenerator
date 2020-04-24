@@ -26,10 +26,6 @@ genApp.config(['$locationProvider', '$routeProvider', function ($locationProvide
       templateUrl: 'templates/views/detailsView.html',
       controller: 'detailsCtrl'
     })
-    .when('/test', {
-      templateUrl: 'templates/views/test.html',
-      controller: 'testCtrl'
-    })
     .otherwise({ redirectTo: '/' });
 }]);
 

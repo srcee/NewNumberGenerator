@@ -14,8 +14,8 @@ genApp.directive('numberDisplay', ['detailsViewsConstant', function (detailsView
             if (attr.type === detailsViewsConstant.random.name) {
                 scope.num = {
                     backgroundColor: attr.color,
-                    top: Math.floor((Math.random() * ((window.innerHeight - 100) - 200)) + 200) + 'px',
-                    left: Math.floor((Math.random() * ((window.innerWidth - 100) - 100)) + 100) + 'px',
+                    top: Math.floor((Math.random() * (95 - 1)) + 1) + '%',
+                    left: Math.floor((Math.random() * (95 - 1)) + 1) + '%',
                 };
 
             } else {

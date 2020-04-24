@@ -1,8 +1,9 @@
-<div class="buttons">
+<div class="actions">
 
     <div class="button-container">
 
-        <a id="byTimeOfGeneration" class="btn" href="#/details/{{generatorID}}/byTimeOfGeneration">Sort by generation
+        <a id="byTimeOfGeneration" class="btn" href="#/details/{{generatorID}}/byTimeOfGeneration">Sort by
+            generation
             time</a>
         <a id="byValueAsc" class="btn" href="#/details/{{generatorID}}/byValueAsc">Sort by value</a>
         <a id="byPeriod" class="btn" href="#/details/{{generatorID}}/byPeriod">Filter by period</a>
@@ -46,10 +47,11 @@
 
     <h3>Display: {{displayMessage}}</h3>
 
-    <div ng-repeat="num in list track by num.timeOfGeneration" class="det-view">
-        <div number-display color={{color}} value={{num.value}} name={{name}} type={{displayType}}
-            ng-click="deleteNumHandler($index)">
+    <div class="nums-container">
+        <div ng-repeat="num in list track by num.timeOfGeneration" class="det-view">
+            <div number-display color={{color}} value={{num.value}} name={{name}} type={{displayType}}
+                ng-click="deleteNumHandler($index)">
+            </div>
         </div>
     </div>
-
 </div>

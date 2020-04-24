@@ -14,16 +14,20 @@
 </head>
 
 <body>
-  <ul class="menu">
-    <li><a href="#/create">Create</a></li>
-    <li><a href="#/list">Existing generators</a></li>
-    <li><a href="#/num-view">All</a></li>
-    <li><a href="#/test">TEST</a></li>
-  </ul>
 
-  <div ng-view></div>
+  <div class="site">
 
-  <div dialog-window></div>
+    <ul class="menu">
+      <li><a href="#/create">Create</a></li>
+      <li><a href="#/list">Existing generators</a></li>
+      <li><a href="#/num-view">All</a></li>
+    </ul>
+
+    <div ng-view></div>
+
+    <div dialog-window></div>
+
+  </div>
 
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>

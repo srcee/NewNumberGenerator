@@ -2,14 +2,60 @@
   padding: 0;
   margin: 0;
 }
-html {
-  box-sizing: border-box;
-}
 *,
 *:before,
 *:after,
 *:focus {
   box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+html {
+  font: 16px/1.5 "Lucida Console", Courier, monospace;
+}
+body,
+button,
+input,
+select,
+option {
+  font: inherit;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  padding-bottom: 0.5rem;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.6rem;
+}
+h4 {
+  font-size: 1.4rem;
+}
+h5 {
+  font-size: 1.2rem;
+}
+h6 {
+  font-size: 1rem;
+}
+body {
+  background-color: lightgrey;
+  margin: 0 auto;
+  max-width: 100rem;
+  padding: 0 1rem 0 1rem;
 }
 .create-generator-form {
   max-width: 500px;
@@ -40,7 +86,7 @@ html {
 }
 .menu li {
   display: inline-block;
-  padding-right: 3em;
+  padding-right: 2rem;
 }
 .menu li a {
   text-decoration: none;
@@ -56,50 +102,37 @@ html {
   background-color: darkblue;
   color: lightgrey;
 }
-.buttons {
+.actions {
   position: relative;
-  height: 40px;
   margin-right: 1em;
-}
-.buttons .button-container {
-  height: 100%;
-  text-align: right;
-}
-.buttons .button-container button {
-  height: 100%;
-}
-.buttons .filter-form {
-  text-align: right;
-  height: 100%;
   width: 100%;
+  text-align: right;
+}
+.actions .filter-form {
   margin-right: 1em;
 }
-.buttons .filter-form label {
+.actions .filter-form label {
   display: inline-block;
   text-align: left;
+  font-weight: bold;
   width: 2em;
   height: 100%;
   padding: 1em 0 0.25em;
 }
-.buttons .filter-form input {
-  height: 100%;
-  width: 250px;
+.actions .filter-form input {
+  width: 14rem;
   border: 2px solid darkblue;
-  padding: 0.5rem;
+  padding: 0.5em;
   border-radius: 5px;
 }
-.buttons .filter-form button {
-  height: 100%;
+.actions .filter-form button {
   margin-top: 1em;
 }
 .details h1 {
   text-align: center;
-  font-size: 1.5em;
-  font-family: "Lucida Console", Courier, monospace;
 }
 .details h1 input {
   background-color: lightgrey;
-  font-size: 1.5em;
   border: none;
 }
 .details h1 input:focus {
@@ -108,8 +141,9 @@ html {
   background-color: white;
   outline: none;
 }
-.details h1 span {
-  font-size: 1.5em;
+.nums-container {
+  position: relative;
+  height: 25rem;
 }
 .num-name {
   color: darkblue;
@@ -123,15 +157,15 @@ html {
 }
 .det-view {
   display: inline-block;
-  margin: 1em 4em 2em 0;
+  margin: 1.5rem 3.5rem 1.5rem 0;
 }
 .nums-view {
-  font-size: 35px;
+  font-size: 2rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white;
   text-align: center;
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   position: absolute;
 }
@@ -145,15 +179,14 @@ html {
 }
 .btn {
   outline: none;
-  text-decoration: none;
-  border: 0;
+  border: none;
   border-radius: 10px;
   background-color: darkblue;
   color: lightgrey;
   font-family: "Lucida Console", Courier, monospace;
   font-weight: bold;
-  padding: 0.5em;
-  width: auto;
+  padding: 0.4rem;
+  width: fit-content;
   cursor: pointer;
   transition: 0.3s background ease;
 }
@@ -175,17 +208,26 @@ button:active {
   position: relative;
   top: 1px;
 }
-table,
-td,
-th {
-  border: 0.1em solid darkblue;
-  text-align: center;
-  font-size: 1em;
+.button-container {
+  text-align: right;
 }
-table {
-  margin-left: auto;
-  margin-right: auto;
+.table {
+  display: table;
+  width: 60%;
+  margin: 5% auto;
   border-collapse: collapse;
+}
+.table div {
+  display: table-row;
+}
+.table div div {
+  display: table-cell;
+  border: 1px solid darkblue;
+  vertical-align: middle;
+  text-align: center;
+}
+.table > div:first-child {
+  font-weight: bold;
 }
 @keyframes slideAnimation {
   0% {
@@ -205,20 +247,19 @@ table {
   z-index: 1;
 }
 .dialog-container {
-  width: 550px;
+  width: 30rem;
   margin: 10% auto;
-  padding: 20px;
+  padding: 1.5rem;
   background-color: white;
   border: 2px solid darkblue;
   border-radius: 10px;
-  transition: 2s;
-  box-shadow: 10px 10px 10px lightgrey;
+  box-shadow: 0.7rem 0.7rem 0.7rem lightgrey;
   text-align: center;
   animation: 0.3s ease-out 0s 1 slideAnimation;
   z-index: 2;
 }
 .dialog-header {
-  padding: 10px;
+  padding: 0.7rem;
   font-family: "Lucida Console", Courier, monospace;
   font-size: 1.5em;
   font-weight: bold;
@@ -228,9 +269,9 @@ table {
   color: white;
 }
 .dialog-body {
-  margin: 20px 0 20px;
-  padding-bottom: 10px;
-  line-height: 30px;
+  margin: 1.5rem 0 1.5rem;
+  padding-bottom: 1.5rem;
+  line-height: 1.5em;
   font-family: "Lucida Console", Courier, monospace;
   border-bottom: 1px solid darkblue;
   border-bottom-left-radius: 8px;
@@ -239,7 +280,6 @@ table {
 .dialog-body div {
   margin: 15px 0 0 15px;
   text-align: left;
-  font-size: 1em;
   font-weight: bold;
 }
 .dialog-body div span {
@@ -249,7 +289,6 @@ table {
 .dialog-body p {
   padding-top: 1em;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
   font-style: italic;
   text-align: center;
   color: red;
@@ -261,52 +300,39 @@ table {
 .dialog-footer button {
   margin-right: 10px;
 }
-.list {
-  width: 800px;
-  margin: 5% auto;
+@media (min-width: 1600px) {
+  html {
+    font-size: 18px;
+  }
 }
-.list div {
-  height: 40px;
-  vertical-align: top;
+@media (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
 }
-.list-titles {
-  width: 100%;
+@media (max-width: 900px) {
+  html {
+    font-size: 14px;
+  }
 }
-.list-titles div {
-  display: inline-block;
-  padding: 5px 0;
-  border: 1px solid darkblue;
-  border-collapse: collapse;
-  text-align: center;
-  font-size: 1em;
-  font-weight: bold;
-  vertical-align: top;
+@media (max-width: 750px) {
+  html {
+    font-size: 12px;
+  }
 }
-.list-values {
-  width: 100%;
+@media (max-width: 900px) {
+  .details h1 {
+    text-align: left;
+  }
 }
-.list-values div {
-  display: inline-block;
-  border: 1px solid darkblue;
-  text-align: center;
-}
-.list-titles-name,
-.list-values-name {
-  width: 31%;
-}
-.list-titles-nums,
-.list-values-nums {
-  width: 25%;
-}
-.list-titles-color,
-.list-values-color {
-  width: 7%;
-}
-.list-button,
-.list-details {
-  width: 35%;
-}
-body {
-  background-color: lightgrey;
-  margin: 0 auto;
+@media (max-width: 750px) {
+  .actions a {
+    display: block;
+    width: fit-content;
+    margin-bottom: 0.5em;
+    text-align: left;
+  }
+  .details h1 {
+    text-align: left;
+  }
 }
