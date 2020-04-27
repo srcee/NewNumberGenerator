@@ -18,7 +18,9 @@
         <div><a ng-href="#/details/{{$index}}/{{defaultDisplayType}}">check</a></div>
 
         <div>
-            <button class="btn" ng-click="pauseHandler($index)">{{gen.isWorking ? "Pause" : "Resume"}}</button>
+            <button class="btn" ng-click="pauseHandler($index)" ng-disabled="!gen.randomizer">
+                {{gen.isWorking ? "Pause" : "Resume"}}
+            </button>
             <button class="btn" ng-click="deleteHandler($index)">Delete</button>
             <button class="btn" ng-click="hideHandler($index)">Hide</button>
         </div>
