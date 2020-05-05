@@ -19,8 +19,9 @@ genApp.controller('numsViewCtrl', [
         $scope.deleteNumHandler = function (idx, generator) {
 
             let currentNum = generator.listOfNumbers[idx];
+
             let dialogInfo = {
-                confirmHandler: () => genActionsService.deleteNumber(idx, generator),
+                confirmHandler: () => genActionsService.deleteNumber(currentNum.timeOfGeneration, generator),
                 messageHtmlUrl: './templates/directives/dialogWindowViews/numInfoPartial.html',
                 containerName: dialogWindowMessagesConstant.delete.number.containerName,
                 headerMessage: dialogWindowMessagesConstant.delete.number.headerMessage,
